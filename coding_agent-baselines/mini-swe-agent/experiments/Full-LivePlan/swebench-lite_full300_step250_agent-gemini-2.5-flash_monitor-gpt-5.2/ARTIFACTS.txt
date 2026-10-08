@@ -1,0 +1,149 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Full-LivePlan
+Experiment: swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Full-LivePlan/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2
+
+Archive: swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Repository path: mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Archive size: 59376121 bytes
+SHA-256: 7f7c0b39e8feb420a9253b295f95c97e2003f0f718ca423c4540b6d35ad19b0a
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step250_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 80 / 300 (26.67%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-swe-agent / genuine Full-LivePlan (rule monitor plus
+  Agent-Planner refiner)
+- Run id: mini_swebench_lite_full_liveplan_20260831_backbone-gemini-2.5-flash_monitor-gpt-5.2
+- Dataset: SWE-bench Lite, exact 300-case test set
+- Agent model: openai/google/gemini-2.5-flash (through OpenRouter)
+- Refiner model: gpt-5.2, refiner configuration config/default_with_rule.yaml
+- Step limit: 250 for every case
+- Execution location: Modal, generation parallelism 12 continuous-refill
+
+Official evaluation:
+- Resolved: 80 / 300 (26.67%)
+- Unresolved: 220 / 300 (73.33%)
+- Cases with a valid completed test run: 239 / 300
+- Empty patches: 50
+- Patch-application failures among nonempty patches: 11
+- Exit-status counts: Submitted 260, LimitsExceeded 28, RepeatedFormatError 12
+
+Recorded model usage:
+- Agent API calls / generations: 20,616 (68.72 mean/case)
+- Agent actions executed: 18,361 (61.20 mean/case)
+- Agent prompt tokens: 703,284,628
+- Agent completion tokens: 5,667,880
+- Agent cache-read tokens: 549,951,567 (subset of prompt tokens above)
+- Reasoning tokens recorded inside output usage: 18,613
+- Deterministic rule checks: 19,382 (64.61 mean/case; zero LLM tokens)
+- Refiner (monitor) calls: 747 (2.49 mean/case)
+- Refiner cooldown events: 1,115
+- Refiner (monitor) prompt tokens: 7,221,538
+- Refiner (monitor) completion tokens: 596,560
+- Recorded interventions: 1,021; recorded guidance messages: 841
+- Trajectories recorded for all 300 / 300 cases
+
+Cost estimate:
+- Dollar cost was not reliably recorded by this (2026-08-31) run; the
+  archive preserves raw token accounting for reproducible pricing instead
+  of a computed dollar figure.
+- Combined recorded tokens: 716,770,606 (agent 708,952,508 + monitor
+  7,818,098); weighted monitor token ratio 1.09%.
+- Mean task-elapsed time: 300.50 s/case (sum 90,150.79 s over 300 cases;
+  agent component 77,654.39 s / 258.85 s mean, monitor component
+  11,950.92 s / 39.84 s mean; weighted monitor/task time ratio 13.26%).
+- Per-operation totals (events / latency seconds / total tokens):
+  agent_generation 20,616 / 68,149.21 / 708,952,508;
+  agent_action 18,361 / 9,505.18 / 0;
+  rule_check 19,382 / 140.82 / 0;
+  refiner_call 747 / 11,810.10 / 7,818,098;
+  refiner_cooldown 1,115 / 0.00 / 0.
+
+Comparison (same 300-case pool, same backbone/refiner models, mini-swe-agent
++ Gemini 2.5 Flash):
+- Vanilla (no monitor): 51 / 300 (17.00%)
+- RuleOnly (variant=monitor, no LLM refiner call): 72 / 300 (24.00%)
+- Fixed-Interval (refiner_only, every 5 steps): 102 / 300 (34.00%)
+- Genuine Full-LivePlan (this artifact): 80 / 300 (26.67%)
+- Adaptive-Interval: 127 / 300 (42.33%)
+
+Historical packaging verification:
+- The replacement archive passed gzip and tar integrity checks locally, and
+  its SHA-256 matched the digest returned by the Modal packager.
+- Resolution uses the repository's official SWE-bench evaluator outputs.
+  Empty patches, LimitsExceeded, RepeatedFormatError, failed tests, and
+  patch-application failures remain normal unresolved outcomes.
+- The archive contains complete trajectories, patches, per-case summaries,
+  predictions, evaluator outputs, and manifests.
+
+Resolved cases (80):
+astropy__astropy-12907, django__django-10914, django__django-11039,
+django__django-11049, django__django-11620, django__django-11815,
+django__django-11999, django__django-12125, django__django-12184,
+django__django-12284, django__django-12453, django__django-12470,
+django__django-12497, django__django-12915, django__django-12983,
+django__django-13028, django__django-13230, django__django-13315,
+django__django-13447, django__django-13551, django__django-13964,
+django__django-14238, django__django-14382, django__django-14411,
+django__django-14580, django__django-14608, django__django-14752,
+django__django-14855, django__django-14915, django__django-14999,
+django__django-15498, django__django-15789, django__django-15790,
+django__django-15851, django__django-16041, django__django-16046,
+django__django-16139, django__django-16379, django__django-16873,
+django__django-17051, django__django-17087, matplotlib__matplotlib-23964,
+matplotlib__matplotlib-23987, matplotlib__matplotlib-24149,
+matplotlib__matplotlib-24970, matplotlib__matplotlib-25442,
+mwaskom__seaborn-3010, mwaskom__seaborn-3190, psf__requests-2674,
+psf__requests-863, pydata__xarray-5131, pylint-dev__pylint-7114,
+pytest-dev__pytest-11143, pytest-dev__pytest-11148, pytest-dev__pytest-5227,
+pytest-dev__pytest-7432, scikit-learn__scikit-learn-10297,
+scikit-learn__scikit-learn-12471, scikit-learn__scikit-learn-13142,
+scikit-learn__scikit-learn-13241, scikit-learn__scikit-learn-13496,
+scikit-learn__scikit-learn-13779, sphinx-doc__sphinx-8721,
+sympy__sympy-13471, sympy__sympy-13480, sympy__sympy-13647,
+sympy__sympy-14774, sympy__sympy-15345, sympy__sympy-15609,
+sympy__sympy-16792, sympy__sympy-17139, sympy__sympy-17655,
+sympy__sympy-18057, sympy__sympy-18189, sympy__sympy-20212,
+sympy__sympy-20442, sympy__sympy-20590, sympy__sympy-21614,
+sympy__sympy-24152, sympy__sympy-24213
+
+Patch-application failures (11):
+django__django-15738, django__django-16400, django__django-16595,
+django__django-16820, django__django-16910, matplotlib__matplotlib-25433,
+scikit-learn__scikit-learn-10949, scikit-learn__scikit-learn-14983,
+scikit-learn__scikit-learn-25500, sympy__sympy-22840, sympy__sympy-23262

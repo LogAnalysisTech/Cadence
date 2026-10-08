@@ -1,0 +1,8 @@
+{
+  "name": "test2",
+  "description": "2-instance feasibility test subset (matches the same 2 instances tested for SWE-agent/OpenHands)",
+  "instance_ids": [
+    "astropy__astropy-12907",
+    "astropy__astropy-14182"
+  ]
+}

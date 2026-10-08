@@ -1,0 +1,413 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: moatless
+Method: RuleOnly
+Experiment: swebench-lite_full300_step50_agent-gpt-5-mini
+Local directory: coding_agent-baselines/moatless/experiments/RuleOnly/swebench-lite_full300_step50_agent-gpt-5-mini
+
+Archive: swebench-lite_full300_step50_agent-gpt-5-mini.tar.gz
+Repository path: moatless/RuleOnly/swebench-lite_full300_step50_agent-gpt-5-mini/swebench-lite_full300_step50_agent-gpt-5-mini.tar.gz
+Archive size: 32071055 bytes
+SHA-256: f5392a43358f7e028b2e395e68f0d08bcead003b1ecfd4fcf15bf79d4865d7e6
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/RuleOnly/swebench-lite_full300_step50_agent-gpt-5-mini/swebench-lite_full300_step50_agent-gpt-5-mini.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/RuleOnly/swebench-lite_full300_step50_agent-gpt-5-mini/swebench-lite_full300_step50_agent-gpt-5-mini.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results moatless/RuleOnly/swebench-lite_full300_step50_agent-gpt-5-mini/swebench-lite_full300_step50_agent-gpt-5-mini.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step50_agent-gpt-5-mini.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 299 / 300
+Resolved: 140 / 300 (46.67%)
+Missing trajectory: django__django-12700. Existing results are retained without inventing a trajectory.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: Moatless / RuleOnly.
+- Method: Agent-Planner rule monitor only; no refiner LLM.
+- Canonical run id: moatless_swebench_lite_rulebased_gpt5mini_20260830
+- Dataset: lite (300 requested cases)
+- Agent model recorded by runner: gpt-5-mini
+- Execution location: Modal
+- Index policy: every case loaded its persistent prebuilt voyage-code-3-1024-v1 index; no fallback index build
+- Archive was regenerated after evaluation so it includes per-case run outputs, predictions, and evaluation results.
+
+Official evaluation:
+- Resolved: 140 / 300 (46.67%)
+- Unresolved: 160 / 300 (53.33%)
+- Evaluation completed flag: 287 / 300
+- Empty patches: 11
+- Patch-application failures among nonempty patches: 2
+- Known evaluator-infrastructure cases: psf__requests-2317 and sympy__sympy-11870 (patch applied, eval_returncode=-1, empty test status)
+- Infrastructure-clean reporting: 140 / 298 (46.98%); the two evaluator-infrastructure cases are excluded from this alternate denominator
+
+Agent run outcomes:
+- Run results: 300 / 300
+- Status counts: {"completed": 299, "failed": 1}
+- The single failed case, django__django-12700, is a deliberate monitor_block_loop termination and remains a normal unresolved outcome.
+- Trajectories and patches: 299 / 300; django__django-12700 has its structured failed run result and effective flow but no trajectory or patch.
+- Search nodes: 6,453 total; 21.51 mean/case
+- Agent generations: 6,464 total; 21.55 mean/case
+- Agent actions: 6,153 total; 20.51 mean/case
+- Provider/framework-reported agent cost: USD 10.552628 total; USD 0.035175 mean/requested case
+- Monitor currency cost: USD 0 (deterministic rules only)
+
+Monitor activity:
+- Rule checks: 6,414 total; 21.38 mean/case
+- Blocking interventions: 261 total; 0.87 mean/case
+- Nonblocking guidance messages: 902 total; 3.01 mean/case
+- Refiner calls: 0
+- Flow errors recorded by completed runs: 0
+
+Time overhead:
+- Sum of per-case task elapsed time: 53,380.50 s
+- Task elapsed time: 177.93 s mean; 119.77 s p50; 438.71 s p95
+- Recorded component time: 53,311.11 s
+- Agent component latency: 53,226.99 s
+- Monitor component latency: 84.12 s
+- Weighted monitor/task time ratio: 0.16%
+
+Token overhead:
+- Agent tokens: 72,248,499 total; 240,828.33 mean/requested case
+  input=69,166,088, output=3,082,411, reasoning=2,316,752, cache_read=53,687,040
+- Monitor tokens: 0
+- Combined recorded tokens: 72,248,499
+
+Operation totals:
+operation | events | latency_seconds | total_tokens
+--- | ---: | ---: | ---:
+agent_generation | 6,464 | included in agent component | 72,248,499
+agent_action | 6,153 | included in agent component | 0
+rule_check | 6,414 | 84.12 | 0
+
+Metric notes:
+- Empty patches, patch-application failures, monitor block-loop termination, and failed official tests remain valid unresolved outcomes.
+- The two explicitly named empty-test evaluator failures are reported separately and are not attributed to agent behavior.
+- Time totals sum per-case measurements and do not represent wall-clock batch duration under parallel execution.
+
+Solved cases (140):
+- astropy__astropy-12907
+- astropy__astropy-14995
+- astropy__astropy-6938
+- django__django-10914
+- django__django-10924
+- django__django-11001
+- django__django-11039
+- django__django-11099
+- django__django-11133
+- django__django-11179
+- django__django-11422
+- django__django-11583
+- django__django-11620
+- django__django-11848
+- django__django-11964
+- django__django-11999
+- django__django-12184
+- django__django-12284
+- django__django-12286
+- django__django-12453
+- django__django-12497
+- django__django-12708
+- django__django-12856
+- django__django-12915
+- django__django-12983
+- django__django-13028
+- django__django-13033
+- django__django-13158
+- django__django-13230
+- django__django-13401
+- django__django-13447
+- django__django-13551
+- django__django-13590
+- django__django-13658
+- django__django-13710
+- django__django-13757
+- django__django-13925
+- django__django-13933
+- django__django-13964
+- django__django-14016
+- django__django-14238
+- django__django-14382
+- django__django-14411
+- django__django-14580
+- django__django-14608
+- django__django-14672
+- django__django-14752
+- django__django-14787
+- django__django-14855
+- django__django-14915
+- django__django-14999
+- django__django-15347
+- django__django-15388
+- django__django-15498
+- django__django-15789
+- django__django-15790
+- django__django-15851
+- django__django-15902
+- django__django-16041
+- django__django-16046
+- django__django-16139
+- django__django-16255
+- django__django-16379
+- django__django-16527
+- django__django-16595
+- django__django-16873
+- django__django-17051
+- django__django-17087
+- matplotlib__matplotlib-23314
+- matplotlib__matplotlib-23562
+- matplotlib__matplotlib-23964
+- matplotlib__matplotlib-24149
+- matplotlib__matplotlib-24970
+- matplotlib__matplotlib-25311
+- matplotlib__matplotlib-25433
+- matplotlib__matplotlib-25442
+- matplotlib__matplotlib-25498
+- matplotlib__matplotlib-26011
+- mwaskom__seaborn-3010
+- mwaskom__seaborn-3190
+- psf__requests-1963
+- psf__requests-2674
+- psf__requests-3362
+- psf__requests-863
+- pydata__xarray-3364
+- pydata__xarray-5131
+- pylint-dev__pylint-5859
+- pytest-dev__pytest-11143
+- pytest-dev__pytest-5227
+- pytest-dev__pytest-7373
+- pytest-dev__pytest-7432
+- scikit-learn__scikit-learn-10297
+- scikit-learn__scikit-learn-11281
+- scikit-learn__scikit-learn-13142
+- scikit-learn__scikit-learn-13241
+- scikit-learn__scikit-learn-13439
+- scikit-learn__scikit-learn-13496
+- scikit-learn__scikit-learn-13584
+- scikit-learn__scikit-learn-13779
+- scikit-learn__scikit-learn-14092
+- scikit-learn__scikit-learn-14894
+- scikit-learn__scikit-learn-15512
+- scikit-learn__scikit-learn-15535
+- sphinx-doc__sphinx-10325
+- sphinx-doc__sphinx-11445
+- sphinx-doc__sphinx-7975
+- sphinx-doc__sphinx-8435
+- sphinx-doc__sphinx-8627
+- sphinx-doc__sphinx-8713
+- sphinx-doc__sphinx-8721
+- sympy__sympy-12419
+- sympy__sympy-13471
+- sympy__sympy-13480
+- sympy__sympy-13647
+- sympy__sympy-13971
+- sympy__sympy-14396
+- sympy__sympy-14774
+- sympy__sympy-15011
+- sympy__sympy-15609
+- sympy__sympy-16792
+- sympy__sympy-16988
+- sympy__sympy-17655
+- sympy__sympy-18057
+- sympy__sympy-18189
+- sympy__sympy-18532
+- sympy__sympy-18621
+- sympy__sympy-20154
+- sympy__sympy-20212
+- sympy__sympy-20442
+- sympy__sympy-20590
+- sympy__sympy-21055
+- sympy__sympy-21614
+- sympy__sympy-21847
+- sympy__sympy-22005
+- sympy__sympy-22714
+- sympy__sympy-23117
+- sympy__sympy-23262
+- sympy__sympy-24066
+- sympy__sympy-24152
+- sympy__sympy-24213
+
+Unresolved cases (160):
+- astropy__astropy-14182
+- astropy__astropy-14365
+- astropy__astropy-7746
+- django__django-11019
+- django__django-11049
+- django__django-11283
+- django__django-11564
+- django__django-11630
+- django__django-11742
+- django__django-11797
+- django__django-11815
+- django__django-11905
+- django__django-11910
+- django__django-12113
+- django__django-12125
+- django__django-12308
+- django__django-12470
+- django__django-12589
+- django__django-12700
+- django__django-12747
+- django__django-12908
+- django__django-13220
+- django__django-13265
+- django__django-13315
+- django__django-13321
+- django__django-13448
+- django__django-13660
+- django__django-13768
+- django__django-14017
+- django__django-14155
+- django__django-14534
+- django__django-14667
+- django__django-14730
+- django__django-14997
+- django__django-15061
+- django__django-15202
+- django__django-15213
+- django__django-15252
+- django__django-15320
+- django__django-15400
+- django__django-15695
+- django__django-15738
+- django__django-15781
+- django__django-15814
+- django__django-15819
+- django__django-15996
+- django__django-16229
+- django__django-16400
+- django__django-16408
+- django__django-16816
+- django__django-16820
+- django__django-16910
+- matplotlib__matplotlib-18869
+- matplotlib__matplotlib-22711
+- matplotlib__matplotlib-22835
+- matplotlib__matplotlib-23299
+- matplotlib__matplotlib-23476
+- matplotlib__matplotlib-23563
+- matplotlib__matplotlib-23913
+- matplotlib__matplotlib-23987
+- matplotlib__matplotlib-24265
+- matplotlib__matplotlib-24334
+- matplotlib__matplotlib-25079
+- matplotlib__matplotlib-25332
+- matplotlib__matplotlib-26020
+- mwaskom__seaborn-2848
+- mwaskom__seaborn-3407
+- pallets__flask-4045
+- pallets__flask-4992
+- pallets__flask-5063
+- psf__requests-2148
+- psf__requests-2317
+- pydata__xarray-4094
+- pydata__xarray-4248
+- pydata__xarray-4493
+- pylint-dev__pylint-6506
+- pylint-dev__pylint-7080
+- pylint-dev__pylint-7114
+- pylint-dev__pylint-7228
+- pylint-dev__pylint-7993
+- pytest-dev__pytest-11148
+- pytest-dev__pytest-5103
+- pytest-dev__pytest-5221
+- pytest-dev__pytest-5413
+- pytest-dev__pytest-5495
+- pytest-dev__pytest-5692
+- pytest-dev__pytest-6116
+- pytest-dev__pytest-7168
+- pytest-dev__pytest-7220
+- pytest-dev__pytest-7490
+- pytest-dev__pytest-8365
+- pytest-dev__pytest-8906
+- pytest-dev__pytest-9359
+- scikit-learn__scikit-learn-10508
+- scikit-learn__scikit-learn-10949
+- scikit-learn__scikit-learn-11040
+- scikit-learn__scikit-learn-12471
+- scikit-learn__scikit-learn-13497
+- scikit-learn__scikit-learn-14087
+- scikit-learn__scikit-learn-14983
+- scikit-learn__scikit-learn-25500
+- scikit-learn__scikit-learn-25570
+- scikit-learn__scikit-learn-25638
+- scikit-learn__scikit-learn-25747
+- sphinx-doc__sphinx-10451
+- sphinx-doc__sphinx-7686
+- sphinx-doc__sphinx-7738
+- sphinx-doc__sphinx-8273
+- sphinx-doc__sphinx-8282
+- sphinx-doc__sphinx-8474
+- sphinx-doc__sphinx-8506
+- sphinx-doc__sphinx-8595
+- sphinx-doc__sphinx-8801
+- sympy__sympy-11400
+- sympy__sympy-11870
+- sympy__sympy-11897
+- sympy__sympy-12171
+- sympy__sympy-12236
+- sympy__sympy-12454
+- sympy__sympy-12481
+- sympy__sympy-13031
+- sympy__sympy-13043
+- sympy__sympy-13146
+- sympy__sympy-13177
+- sympy__sympy-13437
+- sympy__sympy-13773
+- sympy__sympy-13895
+- sympy__sympy-13915
+- sympy__sympy-14024
+- sympy__sympy-14308
+- sympy__sympy-14317
+- sympy__sympy-14817
+- sympy__sympy-15308
+- sympy__sympy-15345
+- sympy__sympy-15346
+- sympy__sympy-15678
+- sympy__sympy-16106
+- sympy__sympy-16281
+- sympy__sympy-16503
+- sympy__sympy-17022
+- sympy__sympy-17139
+- sympy__sympy-17630
+- sympy__sympy-18087
+- sympy__sympy-18199
+- sympy__sympy-18698
+- sympy__sympy-18835
+- sympy__sympy-19007
+- sympy__sympy-19254
+- sympy__sympy-19487
+- sympy__sympy-20049
+- sympy__sympy-20322
+- sympy__sympy-20639
+- sympy__sympy-21171
+- sympy__sympy-21379
+- sympy__sympy-21612
+- sympy__sympy-21627
+- sympy__sympy-22840
+- sympy__sympy-23191
+- sympy__sympy-24102
+- sympy__sympy-24909

@@ -1,0 +1,109 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Cadence
+Experiment: swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Cadence/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2
+
+Archive: swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Repository path: mini-swe-agent/Cadence/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Archive size: 43255746 bytes
+SHA-256: 47209fc847e744a3b1a0b3018696a096023dcb3183766869c203883e47bca67e
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Cadence/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Cadence/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Cadence/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_fixed5_ablation300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 126 / 300 (42.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Configuration and provenance:
+- Run id: mini_swebench_lite_adaptiveinterval_fixed5_step150_ablation300_20260917_backbone-gemini-2.5-flash_monitor-gpt-5.2
+- Dataset: lite
+- Agent model: openai/google/gemini-2.5-flash
+- Monitor model: openai/gpt-5.2
+- Step limit: 150
+- Adaptive interval fixed: 5
+- Patch collection policy: original runner submission; staged collection change not enabled
+- Listed cases: 300
+
+Recorded aggregate metrics (preserving source definitions):
+- N: 300
+- Resolved: 126
+- Success rate: 42.00%
+- Actions: mean=43.146667; total=12,944
+- Checks: mean=8.033333; total=2,410
+- Agent tokens: mean=1,151,841.896667; total=345,552,569
+- Monitor tokens: mean=51,376.063333; total=15,412,819
+- Total tokens: mean=1,203,217.96; total=360,965,388
+
+Evaluation records available in retained artifacts:
+- Evaluation records: 300
+- Resolved: 126
+- Unresolved: 174
+- Missing resolved status: 0
+- Resolution rate over recorded cases: 42.00%
+- Evaluation completed: 255
+- Empty patches: 44
+Solved cases (126):
+astropy__astropy-12907, astropy__astropy-14995, astropy__astropy-6938, django__django-10914, django__django-11001, django__django-11039, django__django-11049, django__django-11099, django__django-11133, django__django-11179, django__django-11583, django__django-11620, django__django-11797, django__django-11815, django__django-12184, django__django-12284, django__django-12286, django__django-12453, django__django-12497, django__django-12708, django__django-12747, django__django-12915, django__django-12983, django__django-13033, django__django-13158, django__django-13230, django__django-13315, django__django-13401, django__django-13590, django__django-13658, django__django-13710, django__django-13925, django__django-13933, django__django-13964, django__django-14017, django__django-14238, django__django-14382, django__django-14411, django__django-14580, django__django-14608, django__django-14672, django__django-14752, django__django-14787, django__django-14855, django__django-14915, django__django-14999, django__django-15061, django__django-15347, django__django-15400, django__django-15498, django__django-15789, django__django-15790, django__django-15814, django__django-15851, django__django-16041, django__django-16139, django__django-16255, django__django-16527, django__django-16595, django__django-17087, matplotlib__matplotlib-23314, matplotlib__matplotlib-23562, matplotlib__matplotlib-23964, matplotlib__matplotlib-23987, matplotlib__matplotlib-24149, matplotlib__matplotlib-25311, matplotlib__matplotlib-25442, matplotlib__matplotlib-26011, matplotlib__matplotlib-26020, mwaskom__seaborn-3010, mwaskom__seaborn-3190, psf__requests-1963, psf__requests-2148, psf__requests-2317, psf__requests-863, pydata__xarray-4094, pydata__xarray-5131, pylint-dev__pylint-5859, pytest-dev__pytest-11143, pytest-dev__pytest-5227, pytest-dev__pytest-7432, pytest-dev__pytest-7490, scikit-learn__scikit-learn-10297, scikit-learn__scikit-learn-12471, scikit-learn__scikit-learn-13142, scikit-learn__scikit-learn-13241, scikit-learn__scikit-learn-13439, scikit-learn__scikit-learn-13496, scikit-learn__scikit-learn-13584, scikit-learn__scikit-learn-14092, scikit-learn__scikit-learn-14894, scikit-learn__scikit-learn-15512, scikit-learn__scikit-learn-15535, scikit-learn__scikit-learn-25570, sphinx-doc__sphinx-7975, sphinx-doc__sphinx-8627, sphinx-doc__sphinx-8713, sphinx-doc__sphinx-8721, sphinx-doc__sphinx-8801, sympy__sympy-12419, sympy__sympy-12454, sympy__sympy-12481, sympy__sympy-13471, sympy__sympy-13480, sympy__sympy-13647, sympy__sympy-14774, sympy__sympy-14817, sympy__sympy-15011, sympy__sympy-15609, sympy__sympy-17022, sympy__sympy-17139, sympy__sympy-17655, sympy__sympy-18189, sympy__sympy-18532, sympy__sympy-19487, sympy__sympy-20212, sympy__sympy-20442, sympy__sympy-20590, sympy__sympy-21379, sympy__sympy-21614, sympy__sympy-21847, sympy__sympy-22714, sympy__sympy-23117, sympy__sympy-24066, sympy__sympy-24152, sympy__sympy-24213
+Unresolved cases (174):
+astropy__astropy-14182, astropy__astropy-14365, astropy__astropy-7746, django__django-10924, django__django-11019, django__django-11283, django__django-11422, django__django-11564, django__django-11630, django__django-11742, django__django-11848, django__django-11905, django__django-11910, django__django-11964, django__django-11999, django__django-12113, django__django-12125, django__django-12308, django__django-12470, django__django-12589, django__django-12700, django__django-12856, django__django-12908, django__django-13028, django__django-13220, django__django-13265, django__django-13321, django__django-13447, django__django-13448, django__django-13551, django__django-13660, django__django-13757, django__django-13768, django__django-14016, django__django-14155, django__django-14534, django__django-14667, django__django-14730, django__django-14997, django__django-15202, django__django-15213, django__django-15252, django__django-15320, django__django-15388, django__django-15695, django__django-15738, django__django-15781, django__django-15819, django__django-15902, django__django-15996, django__django-16046, django__django-16229, django__django-16379, django__django-16400, django__django-16408, django__django-16816, django__django-16820, django__django-16873, django__django-16910, django__django-17051, matplotlib__matplotlib-18869, matplotlib__matplotlib-22711, matplotlib__matplotlib-22835, matplotlib__matplotlib-23299, matplotlib__matplotlib-23476, matplotlib__matplotlib-23563, matplotlib__matplotlib-23913, matplotlib__matplotlib-24265, matplotlib__matplotlib-24334, matplotlib__matplotlib-24970, matplotlib__matplotlib-25079, matplotlib__matplotlib-25332, matplotlib__matplotlib-25433, matplotlib__matplotlib-25498, mwaskom__seaborn-2848, mwaskom__seaborn-3407, pallets__flask-4045, pallets__flask-4992, pallets__flask-5063, psf__requests-2674, psf__requests-3362, pydata__xarray-3364, pydata__xarray-4248, pydata__xarray-4493, pylint-dev__pylint-6506, pylint-dev__pylint-7080, pylint-dev__pylint-7114, pylint-dev__pylint-7228, pylint-dev__pylint-7993, pytest-dev__pytest-11148, pytest-dev__pytest-5103, pytest-dev__pytest-5221, pytest-dev__pytest-5413, pytest-dev__pytest-5495, pytest-dev__pytest-5692, pytest-dev__pytest-6116, pytest-dev__pytest-7168, pytest-dev__pytest-7220, pytest-dev__pytest-7373, pytest-dev__pytest-8365, pytest-dev__pytest-8906, pytest-dev__pytest-9359, scikit-learn__scikit-learn-10508, scikit-learn__scikit-learn-10949, scikit-learn__scikit-learn-11040, scikit-learn__scikit-learn-11281, scikit-learn__scikit-learn-13497, scikit-learn__scikit-learn-13779, scikit-learn__scikit-learn-14087, scikit-learn__scikit-learn-14983, scikit-learn__scikit-learn-25500, scikit-learn__scikit-learn-25638, scikit-learn__scikit-learn-25747, sphinx-doc__sphinx-10325, sphinx-doc__sphinx-10451, sphinx-doc__sphinx-11445, sphinx-doc__sphinx-7686, sphinx-doc__sphinx-7738, sphinx-doc__sphinx-8273, sphinx-doc__sphinx-8282, sphinx-doc__sphinx-8435, sphinx-doc__sphinx-8474, sphinx-doc__sphinx-8506, sphinx-doc__sphinx-8595, sympy__sympy-11400, sympy__sympy-11870, sympy__sympy-11897, sympy__sympy-12171, sympy__sympy-12236, sympy__sympy-13031, sympy__sympy-13043, sympy__sympy-13146, sympy__sympy-13177, sympy__sympy-13437, sympy__sympy-13773, sympy__sympy-13895, sympy__sympy-13915, sympy__sympy-13971, sympy__sympy-14024, sympy__sympy-14308, sympy__sympy-14317, sympy__sympy-14396, sympy__sympy-15308, sympy__sympy-15345, sympy__sympy-15346, sympy__sympy-15678, sympy__sympy-16106, sympy__sympy-16281, sympy__sympy-16503, sympy__sympy-16792, sympy__sympy-16988, sympy__sympy-17630, sympy__sympy-18057, sympy__sympy-18087, sympy__sympy-18199, sympy__sympy-18621, sympy__sympy-18698, sympy__sympy-18835, sympy__sympy-19007, sympy__sympy-19254, sympy__sympy-20049, sympy__sympy-20154, sympy__sympy-20322, sympy__sympy-20639, sympy__sympy-21055, sympy__sympy-21171, sympy__sympy-21612, sympy__sympy-21627, sympy__sympy-22005, sympy__sympy-22840, sympy__sympy-23191, sympy__sympy-23262, sympy__sympy-24102, sympy__sympy-24909
+
+Experiment narrative (COMPARISON300.md; English translation of historical source text):
+# Scheduling ablation on 300 instances
+
+mini-swe-agent; agent: Gemini 2.5 Flash; monitor: GPT-5.2; step limit: 150.
+Both conditions use the same 300 SWE-bench Lite instances. The adaptive-interval reference is drawn from historical local artifacts. The ablation fixes the interval at 5 while retaining the adaptive method's guidance and intervention mechanisms.
+
+| Method | Resolved / Total | Resolution rate | Mean executed actions | Mean monitor checks | Mean total tokens |
+|---|---:|---:|---:|---:|---:|
+| Adaptive-interval | 127/300 | 42.33% | 39.80 | 5.90 | 1,028,111 |
+| Fixed-interval-5 ablation | 126/300 | 42.00% | 43.15 | 8.03 | 1,203,218 |
+
+The fixed-interval-5 ablation changes the resolution rate by -0.33 percentage points relative to the adaptive reference.
+Of the paired outcomes, 33 instances change from resolved to unresolved and 32 from unresolved to resolved; 94 are resolved by both conditions and 141 are unresolved by both.
+The two-sided exact McNemar test gives p = 1.
+
+Evaluation status: adaptive reference {'completed': 260, 'empty_patch': 40}; fixed-interval-5 {'completed': 255, 'empty_patch': 44, 'patch_apply_failed': 1}. Empty patches and patches that cannot be applied count as unresolved among all 300 instances; none are excluded. Infrastructure errors prevent report generation.
+Monitor formatting errors: 18 for the adaptive reference and 16 for fixed-interval-5. These outcomes are retained under each method's original handling rules; model errors do not trigger selective reruns.
+
+Each condition has one run per instance, and the reference consists of historical runs. The comparison therefore does not control for stochastic variation or differences in execution time. Mean actions are computed from agent_action events. Total tokens comprise agent and monitor input plus output tokens, rather than monetary costs adjusted for prompt-caching discounts.
+
+Experiment narrative (REPORT.md; historical source text):
+# Adaptive-Interval fixed5 ablation
+
+Gemini 2.5 Flash agent / GPT-5.2 monitor;150 steps;14 parallel generation;15 parallel evaluation for first193;20 for remaining107.
+
+Resolved: 126/300 (42.00%).
+Mean actions: 43.15; checks: 8.03; total tokens: 1,203,218.
+
+Only scheduling is ablated: interval stays5; prompts, verdict semantics and guidance history unchanged. Pilot3 reused in final300. Original submission collection and synchronous evaluator retained; no automatic patch repair. Evaluation failures: {None: 255, 'empty_patch': 44, 'patch_apply_failed': 1}.

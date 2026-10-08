@@ -1,0 +1,90 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: moatless
+Method: Vanilla
+Experiment: swebench-lite_full300_step50_agent-gemini-2.5-flash
+Local directory: coding_agent-baselines/moatless/experiments/Vanilla/swebench-lite_full300_step50_agent-gemini-2.5-flash
+
+Archive: swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+Repository path: moatless/Vanilla/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+Archive size: 27050623 bytes
+SHA-256: 67147ce9ff488adc4027e0b21aac2d6f8360cd5e45fda606a092ac58f009a93f
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/Vanilla/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/Vanilla/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results moatless/Vanilla/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 72 / 300 (24.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: Moatless / Vanilla (no runtime monitor)
+- Run id: moatless_swebench_lite_vanilla_step50_seed20260901_n100_20260902_backbone-gemini-2.5-flash
+- Dataset: SWE-bench Lite, exact 300-case test set
+- The historical n100 name records the initial tranche; the completed run combines the predetermined first 100 cases with the exact remaining 200-case complement.
+- Agent model: openai/google/gemini-2.5-flash
+- Search limit: 50 steps for every case
+- Execution location: Modal
+- Index policy: persistent prebuilt voyage-code-3-1024-v1 indexes
+
+Official evaluation:
+- Resolved: 72 / 300 (24.00%)
+- Unresolved: 228 / 300 (76.00%)
+- Evaluation completed: 240 / 300
+- Empty patches: 60
+- Patch-application failures among nonempty patches: 0
+- Evaluator infrastructure failures requiring retry: 0
+
+Recorded model usage:
+- Agent API calls: 7,218
+- Prompt tokens: 92,874,317
+- Completion tokens: 1,739,459
+- Reasoning tokens: 5,550
+- Cache-read tokens: 69,020,128
+- Raw prompt-plus-completion tokens: 94,613,776 (315,379.25 mean/case)
+- Monitor tokens: 0
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not treated as evidence of free execution.
+- At Gemini 2.5 Flash standard list prices used for this audit (USD 0.30/M uncached input, USD 0.03/M cached input, USD 2.50/M output including thinking), estimated model cost is approximately USD 13.58 total, or USD 0.0453 per attempted case.
+- This estimate excludes Modal compute, persistent indexing, storage and network costs and may differ from the routed provider invoice.
+
+Comparison (verified full 300-case pool; Moatless + Gemini 2.5 Flash):
+- Vanilla (no monitor): 72 / 300 (24.00%)
+- RuleOnly (rules only, no LLM refiner): 77 / 300 (25.67%)
+- Fixed-Interval (refiner every 5 steps, gpt-5.2): 92 / 300 (30.67%)
+- Cadence (Adaptive-Interval, gpt-5.2): 119 / 300 (39.67%)
+- Full-LivePlan (retained v2 run, rules + gpt-5.2 refiner): 106 / 300 (35.33%)
+
+Historical packaging verification:
+- The archive was downloaded with authentication at the exact immutable revision above.
+- Downloaded SHA-256 matched the packager digest.
+- gzip integrity and complete tar listing checks passed.

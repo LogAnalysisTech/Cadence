@@ -1,0 +1,131 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: moatless
+Method: Cadence
+Experiment: swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2
+Local directory: coding_agent-baselines/moatless/experiments/Cadence/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2
+
+Archive: swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Repository path: moatless/Cadence/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Archive size: 36247987 bytes
+SHA-256: 3be80b65ffe4b4e00a948ae4bf4f929896421fcf30f3f3c909d340fb53484887
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/Cadence/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/Cadence/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results moatless/Cadence/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step50_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 119 / 300 (39.67%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: Moatless / Adaptive-Interval (AdaptiveFixedIntervalMonitor via LivePlan refiner, variant=adaptive_interval)
+- Run id: moatless_swebench_lite_adaptiveinterval_step50_full300_20260905_backbone-gemini-2.5-flash_monitor-gpt-5.2
+- Dataset: SWE-bench Lite, exact 300-case test set
+- Composition: the first 100 cases were generated and evaluated under a separate
+  100-case run_id (moatless100_adaptive_v2_20260905_gemini_gpt52) as part of a
+  four-way Fixed-Interval/Full-LivePlan/Adaptive-Interval/Vanilla comparison, then
+  copied verbatim (predictions, trajectories, evaluation results) into this
+  unified run_id; the remaining exact 200-case complement was generated and
+  evaluated directly under this run_id. No case was regenerated or re-evaluated.
+- Agent model: openai/google/gemini-2.5-flash
+- Refiner/reviewer model: gpt-5.2 (never gpt-5.2-codex -- explicitly verified in
+  the launch command for both the original 100 and the remaining 200)
+- Check cadence: adaptive interval, base 5 steps, growing by 2 up to a 20-step
+  cap, resetting to 5 on any block verdict; one check counts one executed
+  Moatless node/step regardless of how many actions that node's single model
+  turn contained (fixed this session -- see the refiner_only node-vs-action
+  cadence bug this same date, which affected the Fixed-Interval condition, not
+  this one, but the counting convention here was verified against it)
+- Search limit: 50 steps for every case
+- Execution location: Modal, generation parallelism 14 (continuous/rolling
+  scheduling: a finished case is immediately replaced by the next pending one,
+  rather than waiting for a whole batch to complete)
+- Index policy: persistent prebuilt voyage-code-3-1024-v1 indexes (reused, not
+  rebuilt)
+- Data-quality fix (this revision): 3 cases (django__django-12589,
+  pydata__xarray-5131, sympy__sympy-22840) originally ended in
+  agent_exit=completion_error (2x "Completion response is empty" transient
+  Gemini empty-response, 1x "No tool calls found in response" retry
+  exhaustion) and were regenerated cleanly; all 3 now complete with no error.
+  A full server-side scan confirmed 0/300 remaining completion_error or
+  missing cases after the fix.
+
+Official evaluation:
+- Resolved: 119 / 300 (39.67%)
+- Unresolved: 181 / 300 (60.33%)
+
+Statistics verification (2026-10-07):
+- Usage totals were recomputed from all 300 retained per-case moatless/*/run_result.json
+  records; evaluation counts use evaluation_modal/*/result.json.
+- Agent API calls count overhead_summary.by_operation.agent_generation events;
+  refiner API calls count by_operation.refiner_call events. Action execution,
+  rule checks and cooldown events are excluded. These are recorded logical
+  calls; network-level retries are not separately reconstructed.
+- Cost estimates retain the historical rates stated below; no new pricing
+  assumption or cache discount was introduced by this correction.
+
+Recorded model usage:
+- Agent API calls: 9,085
+- Agent prompt tokens: 134,331,622
+- Agent completion tokens: 2,149,494
+- Refiner (monitor) API calls: 1,214
+- Refiner (monitor) prompt tokens: 7,182,718
+- Refiner (monitor) completion tokens: 1,533,245
+- Usage recorded for all 300 / 300 cases (verified from retained per-case records)
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At OpenRouter standard list prices used for this audit (Gemini 2.5 Flash:
+  USD 0.30/M input, USD 2.50/M output; gpt-5.2: USD 1.75/M input, USD 14.00/M
+  output; cache-read discounts not applied), estimated cost is:
+  - Agent (Gemini 2.5 Flash): USD 45.67
+  - Refiner (gpt-5.2): USD 34.04
+  - Total: USD 79.71, or USD 0.2657 per case
+- This estimate excludes Modal compute, persistent indexing, storage and
+  network costs and may differ from the routed provider invoice.
+
+Comparison (verified full 300-case pool; Moatless + Gemini 2.5 Flash):
+- Vanilla (no monitor): 72 / 300 (24.00%)
+- RuleOnly (rules only, no LLM refiner): 77 / 300 (25.67%)
+- Fixed-Interval (refiner every 5 steps, gpt-5.2): 92 / 300 (30.67%)
+- Cadence (Adaptive-Interval, gpt-5.2): 119 / 300 (39.67%)
+- Full-LivePlan (retained v2 run, rules + gpt-5.2 refiner): 106 / 300 (35.33%)
+
+Historical packaging verification:
+- The archive was uploaded directly from a local download of the Modal-side
+  tar.gz (built by tarring the run_id directory in place, not reconstructed
+  from individual downloads).
+- SHA-256 above was computed locally on the exact file uploaded.
+- gzip integrity and complete tar listing were checked by decompressing every
+  member before upload; case-count (300) and per-case required file presence
+  (prediction_parts, trajectory.json, run_result.json, evaluation result.json)
+  were asserted before publishing.

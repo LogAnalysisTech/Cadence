@@ -1,0 +1,138 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Fixed-Interval
+Experiment: swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Fixed-Interval/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2
+
+Archive: swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2.tar.gz
+Repository path: mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2.tar.gz
+Archive size: 41880522 bytes
+SHA-256: 740a9eb563aeaafd38d3d2768a13692c01faaa8d297646225e2c5aa5170111ba
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 159 / 300 (53.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-swe-agent / Fixed-Interval (LivePlanBoundaryMonitor
+  variant=refiner_only, refiner checks every 5 steps -- mini-swe-agent is
+  strictly linear, one action per step, so there is no node-vs-action cadence
+  ambiguity here, unlike the Moatless adapter)
+- Run id: mini_swebench_lite_fixedinterval_step150_full300_20260906_backbone-qwen3-coder-480b-a35b_monitor-gpt-5.2
+- Dataset: SWE-bench Lite, exact 300-case test set (identical pool used for
+  the same-day Moatless four-way comparison and the mini-swe-agent Qwen
+  Vanilla run discovered earlier this session)
+- Composition: the first 100 cases were generated and evaluated under a
+  separate 100-case run_id (mini100_qwen_fixed_20260906_monitor-gpt-5.2) as
+  part of a three-way Full-LivePlan/Fixed-Interval/Adaptive-Interval
+  comparison on this backbone, then copied verbatim (trajectories,
+  predictions, summaries, evaluation results) into this unified run_id; the
+  remaining exact 200-case complement was generated and evaluated directly
+  under this run_id. No case was regenerated or re-evaluated.
+- Agent model: openai/qwen/qwen3-coder (Qwen3-Coder-480B-A35B via OpenRouter)
+- Refiner/reviewer model: gpt-5.2 (never gpt-5.2-codex -- explicitly verified
+  in the launch command for both the original 100 and the remaining 200)
+- Check cadence: fixed every 5 steps
+- Step limit: 150 for every case (matches the step_limit used for this same
+  backbone's earlier Vanilla run)
+- Execution location: Modal, generation parallelism 14 (continuous/rolling
+  scheduling: a finished case is immediately replaced by the next pending
+  one, not batch-barrier scheduling)
+- One transient infrastructure failure during this artifact's own packaging
+  step (Modal control-plane `ConnectionError: Deadline exceeded`, unrelated
+  to any generated data) was retried manually and succeeded; no case data was
+  affected.
+
+Official evaluation:
+- Resolved: 159 / 300 (53.00%)
+- Unresolved: 141 / 300 (47.00%)
+- Evaluation completed: 271 / 300
+- Empty patches: 29
+- Patch-application failures among nonempty patches: 0
+- Evaluator infrastructure failures requiring retry: 0
+
+Statistics verification (2026-10-07):
+- Usage totals were recomputed from all 300 retained per-case summary_parts/*.json
+  records; evaluation counts use evaluation_modal/*/result.json.
+- Agent API calls count overhead_summary.by_operation.agent_generation events;
+  refiner API calls count by_operation.refiner_call events. Action execution,
+  rule checks and cooldown events are excluded. These are recorded logical
+  calls; network-level retries are not separately reconstructed.
+- Cost estimates retain the historical rates stated below; no new pricing
+  assumption or cache discount was introduced by this correction.
+- The archived root summary.json covers only 200 cases from an earlier batch.
+  Full-run totals below are based on the 300 per-case records, not that stale
+  root summary. The source archive bytes and SHA-256 are preserved under the new filename.
+
+Recorded model usage:
+- Agent API calls: 22,149
+- Agent prompt tokens: 420,905,379
+- Agent completion tokens: 2,638,711
+- Agent reasoning tokens: 0
+- Agent cache-read tokens: 233,092,723
+- Refiner (monitor) prompt tokens: 14,816,759
+- Refiner (monitor) completion tokens: 2,429,528
+- Raw agent prompt-plus-completion tokens: 423,544,090 (1,411,813.6 mean/case)
+- Usage recorded for all 300 / 300 cases (per-case summary_parts records).
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At OpenRouter standard list prices used for this audit (Qwen3-Coder-480B-A35B:
+  USD 0.22/M input, USD 1.80/M output; gpt-5.2: USD 1.75/M input,
+  USD 14.00/M output; cache-read discounts not applied), estimated cost
+  over all 300 cases is:
+  - Agent (Qwen3-Coder-480B-A35B): USD 97.35
+  - Refiner (gpt-5.2): USD 59.94
+  - Total: USD 157.29, or USD 0.5243 per case
+- This estimate excludes Modal compute, persistent indexing, storage and
+  network costs and may differ from the routed provider invoice.
+
+Comparison (verified full 300-case pool; mini-swe-agent + Qwen3-Coder-480B-A35B):
+- Vanilla (no monitor): 113 / 300 (37.67%)
+- RuleOnly (rules only, no LLM refiner): 119 / 300 (39.67%)
+- Fixed-Interval (refiner every 5 steps, gpt-5.2): 159 / 300 (53.00%)
+- Cadence (Adaptive-Interval, gpt-5.2): 158 / 300 (52.67%)
+- Full-LivePlan (rules + gpt-5.2 refiner): 146 / 300 (48.67%)
+
+Historical packaging verification:
+- The archive was uploaded directly from a local download of the Modal-side
+  tar.gz (built by tarring the run_id directory in place, not reconstructed
+  from individual downloads).
+- SHA-256 above was computed locally on the exact file uploaded.
+- gzip integrity and complete tar listing were checked by decompressing every
+  member before upload; case-count (300) and per-case required file presence
+  (prediction_parts, summary_parts, trajectory, evaluation result.json) were
+  asserted before publishing.

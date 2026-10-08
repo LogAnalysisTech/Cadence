@@ -1,0 +1,9 @@
+# Local submission tools only. Agent/runtime dependencies are built in Modal.
+# Versions verified with this repository's four Modal CLI entry points.
+modal==1.4.2
+# Modal 1.4.2 mixes Click commands into Typer; newer Typer's bundled Click
+# raises a different Exit class and makes `modal run ... --help` fail.
+click==8.1.8
+typer==0.9.0
+python-dotenv==1.0.1
+datasets==4.8.4

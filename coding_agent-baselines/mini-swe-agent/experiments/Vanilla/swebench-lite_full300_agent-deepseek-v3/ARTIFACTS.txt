@@ -1,0 +1,152 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Vanilla
+Experiment: swebench-lite_full300_agent-deepseek-v3
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Vanilla/swebench-lite_full300_agent-deepseek-v3
+
+Archive: swebench-lite_full300_agent-deepseek-v3.tar.gz
+Repository path: mini-swe-agent/Vanilla/swebench-lite_full300_agent-deepseek-v3/swebench-lite_full300_agent-deepseek-v3.tar.gz
+Archive size: 34745595 bytes
+SHA-256: 69103990396d3dfed23d137513fee1c80dee9520f16aebe0e23de101aec8002a
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Vanilla/swebench-lite_full300_agent-deepseek-v3/swebench-lite_full300_agent-deepseek-v3.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Vanilla/swebench-lite_full300_agent-deepseek-v3/swebench-lite_full300_agent-deepseek-v3.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Vanilla/swebench-lite_full300_agent-deepseek-v3/swebench-lite_full300_agent-deepseek-v3.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_agent-deepseek-v3.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 36 / 300 (12.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-SWE-agent / Vanilla
+- Method: No monitor, no phase policy, and no finding lifecycle.
+- Run id: mini_swebench_lite_vanilla_backbone-deepseek-v3_20260831
+- Dataset: SWE-bench Lite test split (300 cases)
+- Agent model: openai/deepseek/deepseek-chat through OpenRouter
+- Effective backbone: DeepSeek V3
+- Concurrency: initially 15, reduced to 10 after provider throttling; targeted retries used 5 and then 1
+- Execution location: Modal
+
+Official evaluation:
+- Resolved: 36 / 300 (12.00%)
+- Unresolved: 264 / 300 (88.00%)
+- Cases with a valid completed test run: 183 / 300
+- Empty patches: 97
+- Patch-application failures among nonempty patches: 19
+- Persistent generation-side provider failure: django__django-11964
+- Persistent evaluator anomaly: sympy__sympy-11870 (patch applied cleanly, but three evaluator attempts reproducibly ended after about five minutes with eval_returncode=-1 and an empty test result)
+
+Agent run outcomes after targeted retries:
+- Trajectories recorded: 300 / 300
+- Exit-status counts: {"Submitted": 259, "RepeatedFormatError": 23, "BadRequestError": 18}
+- Of the 18 BadRequestError cases, 17 exceeded the model's 163,840-token context limit; django__django-11964 repeatedly returned a generic provider BadRequest after otherwise successful calls.
+- API calls / generations recorded in the canonical final summaries: 3,871 total; 12.90 mean/case
+- Agent actions: 22,375 total; 74.58 mean/case
+- Monitor checks, interventions, and guidance: 0
+
+Token and cost accounting:
+- Canonical final-summary tokens: 60,933,629 total; 203,112.10 mean/case
+- Input tokens: 58,409,166
+- Output tokens: 2,524,463
+- Cache-read tokens: 29,230,400 (OpenRouter did not advertise a separate cache-read price for this model)
+- Reasoning tokens: 0
+- Canonical final-attempt API estimate at the OpenRouter prices observed on 2026-08-31: USD 17.631434 total; USD 0.058771 mean/case
+- Actual experiment billing is higher than USD 21.197290 (USD 0.070658/case) because retry runs overwrote earlier per-case summaries. The lower bound comes from the last pre-retry 299-case token snapshot; exact all-attempt billing is not reconstructible from the final archive.
+- Modal container cost is not included.
+
+Time:
+- Sum of canonical per-case task elapsed time: 101,792.75 s
+- Mean canonical task elapsed time: 339.31 s/case
+
+Resolved cases (36):
+- django__django-10914
+- django__django-11039
+- django__django-11049
+- django__django-11133
+- django__django-13230
+- django__django-13315
+- django__django-13658
+- django__django-14238
+- django__django-14382
+- django__django-14855
+- django__django-15347
+- django__django-15789
+- django__django-15814
+- django__django-16041
+- django__django-16139
+- django__django-16255
+- django__django-16379
+- django__django-16873
+- matplotlib__matplotlib-23964
+- matplotlib__matplotlib-24970
+- mwaskom__seaborn-3010
+- mwaskom__seaborn-3190
+- psf__requests-2674
+- psf__requests-863
+- pydata__xarray-5131
+- pylint-dev__pylint-7993
+- pytest-dev__pytest-5227
+- pytest-dev__pytest-7432
+- scikit-learn__scikit-learn-13241
+- scikit-learn__scikit-learn-14092
+- sympy__sympy-13471
+- sympy__sympy-13480
+- sympy__sympy-14774
+- sympy__sympy-16988
+- sympy__sympy-23117
+- sympy__sympy-24213
+
+Patch-application failures (19):
+- django__django-11630
+- django__django-11910
+- django__django-12184
+- django__django-12589
+- django__django-12700
+- django__django-15202
+- django__django-15781
+- django__django-16820
+- matplotlib__matplotlib-18869
+- psf__requests-3362
+- pylint-dev__pylint-7114
+- pytest-dev__pytest-11148
+- pytest-dev__pytest-5221
+- pytest-dev__pytest-7490
+- scikit-learn__scikit-learn-11281
+- scikit-learn__scikit-learn-14087
+- sphinx-doc__sphinx-8801
+- sympy__sympy-13773
+- sympy__sympy-16792
+
+Metric notes:
+- Resolution uses the repository's official SWE-bench evaluator outputs.
+- Empty patches and deterministic context-limit failures remain normal unresolved outcomes.
+- Provider and evaluator anomalies are retained and explicitly disclosed rather than silently counted as ordinary agent failures.
+- The archive contains complete trajectories, patches, per-case summaries, predictions, evaluator outputs, and manifests.

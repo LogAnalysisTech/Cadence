@@ -1,0 +1,130 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: RuleOnly
+Experiment: swebench-lite_v2_full300_step150_agent-gemini-2.5-flash
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/RuleOnly/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash
+
+Archive: swebench-lite_v2_full300_step150_agent-gemini-2.5-flash.tar.gz
+Repository path: mini-swe-agent/RuleOnly/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash.tar.gz
+Archive size: 46695560 bytes
+SHA-256: e37a6d2f3fc6bf3c9abe3f5ef257ecb63ab06ef6d3309ab118186a0a8187b9a5
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/RuleOnly/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/RuleOnly/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/RuleOnly/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash/swebench-lite_v2_full300_step150_agent-gemini-2.5-flash.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_v2_full300_step150_agent-gemini-2.5-flash.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 72 / 300 (24.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-swe-agent / RuleOnly (LivePlan variant=monitor, using
+  default_rules.json; deterministic local rule checks only, no refiner
+  LLM call)
+- Run id: mini_swebench_lite_liveplan_rulebased_step150_full300_20260903_v2_backbone-gemini-2.5-flash
+- Dataset: SWE-bench Lite, exact 300-case test set
+- Agent model: openai/google/gemini-2.5-flash (through OpenRouter)
+- Step limit: 150 for every case
+- Execution location: Modal, generation parallelism 10 continuous-map;
+  main generation window 2026-09-03 14:49:41 to 16:39:43 (Asia/Singapore)
+- Note: an earlier non-v2 attempt at this run is invalid and excluded --
+  its bare Gemini model name routed to an unavailable Vertex backend
+- Infrastructure audit: generation completed for all 300 cases.
+  sympy__sympy-21627 had one pre-agent SWE-ReX runtime-start connection
+  timeout and was retried exactly once (the retry submitted a 634-character
+  patch). Three evaluator connection-reset failures were retried exactly
+  once: psf__requests-2317, sphinx-doc__sphinx-8595, sympy__sympy-13480.
+  No unresolved provider, container, runtime-start, or evaluator
+  infrastructure failure remains; empty patches, patch-application
+  failures, ordinary test failures, and step-limit outcomes were retained
+  as genuine model outcomes.
+
+Official evaluation:
+- Resolved: 72 / 300 (24.00%)
+- Unresolved: 228 / 300 (76.00%)
+- Cases with a valid completed test run: 224 / 300
+- Empty patches: 60
+- Patch-application failures among nonempty patches: 16
+- Exit-status counts: Submitted 251, LimitsExceeded 44, RepeatedFormatError 5
+
+Recorded model usage:
+- Agent API calls / generations: 17,327 (57.76 mean/case)
+- Agent actions executed: 15,307 (51.02 mean/case)
+- Agent prompt tokens: 405,940,503
+- Agent completion tokens: 4,895,370
+- Agent cache-read tokens: 294,526,262 (subset of prompt tokens above)
+- Reasoning tokens recorded inside output usage: 19,157
+- Rule-monitor checks (deterministic, no LLM): 16,371 (54.57 mean/case)
+- Refiner (monitor) calls: 0 -- rule checks consumed zero LLM tokens
+- Recorded blocking interventions: 1,064
+- Recorded guidance messages: 672
+- Trajectories recorded for all 300 / 300 cases
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At OpenRouter list prices (Gemini 2.5 Flash: USD 0.30/M uncached input,
+  USD 0.03/M cache-read, USD 2.50/M output):
+  - Agent (Gemini 2.5 Flash): USD 54.50, or USD 0.1817 per case
+  - Refiner: USD 0.00 (no LLM calls in this variant)
+  - Total: USD 54.50
+- This estimate excludes Modal compute and may differ from the routed
+  provider invoice.
+- Mean task-elapsed time: 164.61 s/case (sum 49,383.89 s over 300 cases;
+  agent component 48,889.68 s, rule-monitor component 114.92 s).
+
+Comparison (same 300-case pool, same backbone/refiner models, mini-swe-agent
++ Gemini 2.5 Flash):
+- Vanilla (no monitor): 51 / 300 (17.00%)
+- RuleOnly (this artifact): 72 / 300 (24.00%)
+- Fixed-Interval (refiner_only, every 5 steps): 102 / 300 (34.00%)
+- Genuine Full-LivePlan (variant=refiner, rules + gpt-5.2 refiner):
+  80 / 300 (26.67%)
+- Adaptive-Interval: 127 / 300 (42.33%)
+
+Historical packaging verification:
+- Exact-revision authenticated download completed successfully.
+- Downloaded SHA-256 matched the local archive and the Modal packager
+  output.
+- gzip and tar integrity checks passed.
+- The archive includes all 300 trajectories, patches, monitor artifacts,
+  predictions, summaries, and evaluator outputs.
+
+Exact paired comparisons on the same 300 case IDs (McNemar, two-sided):
+- Versus Gemini Vanilla (51/300): both 35, RuleOnly-only 37, Vanilla-only
+  16, neither 212; delta +21; exact p=0.0054863449.
+- Versus Gemini genuine Full-LivePlan (80/300): both 45, RuleOnly-only 27,
+  Full-LivePlan-only 35, neither 193; delta -8; exact p=0.3741517124.
+- Versus the pre-fix "Our Monitor" at a common 150-step cap (97/300): both
+  52, RuleOnly-only 20, Our-only 45, neither 183; delta -25;
+  exact p=0.0026259226. The pre-fix monitor retains an old phase-visit
+  behavior later removed and is a diagnostic reference only, not a clean
+  ablation baseline.

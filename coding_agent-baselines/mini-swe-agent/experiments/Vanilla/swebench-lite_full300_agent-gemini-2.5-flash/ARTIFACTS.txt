@@ -1,0 +1,137 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Vanilla
+Experiment: swebench-lite_full300_agent-gemini-2.5-flash
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Vanilla/swebench-lite_full300_agent-gemini-2.5-flash
+
+Archive: swebench-lite_full300_agent-gemini-2.5-flash.tar.gz
+Repository path: mini-swe-agent/Vanilla/swebench-lite_full300_agent-gemini-2.5-flash/swebench-lite_full300_agent-gemini-2.5-flash.tar.gz
+Archive size: 40278802 bytes
+SHA-256: c4d80ac11cc009a3ec951e8b5f320d99e3c78b7b671b9cd2fa27c46ff625eaa7
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Vanilla/swebench-lite_full300_agent-gemini-2.5-flash/swebench-lite_full300_agent-gemini-2.5-flash.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Vanilla/swebench-lite_full300_agent-gemini-2.5-flash/swebench-lite_full300_agent-gemini-2.5-flash.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Vanilla/swebench-lite_full300_agent-gemini-2.5-flash/swebench-lite_full300_agent-gemini-2.5-flash.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_agent-gemini-2.5-flash.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 51 / 300 (17.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-swe-agent / Vanilla (no monitor, no phase policy, no
+  finding lifecycle)
+- Run id: mini_swebench_lite_vanilla_backbone-gemini-2.5-flash_20260831
+- Dataset: SWE-bench Lite, exact 300-case test set
+- Agent model: openai/google/gemini-2.5-flash (through OpenRouter)
+- Execution location: Modal, generation parallelism 15 continuous-refill;
+  the final 4 missing cases were completed at parallelism 4
+- Persistent evaluator anomaly: psf__requests-2317 (reproducible SWE-ReX
+  request interruption near five minutes; eval_returncode=-1 with no valid
+  test result -- not a generation-side failure)
+- No generation-side provider/API terminal failures remained in this
+  archive.
+
+Official evaluation:
+- Resolved: 51 / 300 (17.00%)
+- Unresolved: 249 / 300 (83.00%)
+- Cases with a valid completed test run: 208 / 300
+- Empty patches: 81
+- Patch-application failures among nonempty patches: 10
+- Exit-status counts: Submitted 228, LimitsExceeded 60, RepeatedFormatError 12
+
+Recorded model usage:
+- Agent API calls / generations: 22,012 (73.37 mean/case)
+- Agent prompt tokens: 885,214,863
+- Agent completion tokens: 5,305,128
+- Agent cache-read tokens: 733,031,430 (subset of prompt tokens above)
+- Reasoning tokens recorded inside output usage: 13,198
+- Refiner (monitor) prompt/completion tokens: 0 / 0 (no monitor installed
+  in this condition)
+- Trajectories recorded for all 300 / 300 cases
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At the OpenRouter list prices observed on 2026-08-31 (Gemini 2.5 Flash:
+  USD 0.30/M uncached input, USD 0.03/M cache-read, USD 2.50/M output):
+  - Agent (Gemini 2.5 Flash): USD 80.91, or USD 0.2697 per case
+  - Refiner: USD 0.00 (no LLM calls in this condition)
+  - Total: USD 80.91
+- This estimate excludes Modal compute and may differ from the routed
+  provider invoice.
+- Mean task-elapsed time: 253.11 s/case (sum 75,932.04 s over 300 cases).
+
+Comparison (same 300-case pool, same backbone/refiner models, mini-swe-agent
++ Gemini 2.5 Flash):
+- Vanilla (this artifact): 51 / 300 (17.00%)
+- RuleOnly (variant=monitor, no LLM refiner call): 72 / 300 (24.00%)
+- Fixed-Interval (refiner_only, every 5 steps): 102 / 300 (34.00%)
+- Genuine Full-LivePlan (variant=refiner, rules + gpt-5.2 refiner):
+  80 / 300 (26.67%)
+- Adaptive-Interval: 127 / 300 (42.33%)
+
+Historical packaging verification:
+- The archive was uploaded directly from a local download of the Modal-side
+  tar.gz.
+- SHA-256 above was computed locally on the exact file uploaded.
+- The archive contains complete trajectories, patches, per-case summaries,
+  predictions, evaluator outputs, and manifests for all 300 cases.
+- Resolution uses the repository's official SWE-bench evaluator outputs.
+  Empty patches, step-limit exhaustion, and repeated format failures remain
+  normal unresolved outcomes, not infrastructure failures.
+
+Resolved cases (51):
+django__django-10914, django__django-11039, django__django-11133,
+django__django-11815, django__django-11999, django__django-12284,
+django__django-12286, django__django-12497, django__django-12915,
+django__django-12983, django__django-13230, django__django-13551,
+django__django-13658, django__django-14016, django__django-14238,
+django__django-14608, django__django-14672, django__django-14855,
+django__django-15498, django__django-15789, django__django-15790,
+django__django-15814, django__django-15851, django__django-16139,
+django__django-16379, django__django-16527, django__django-17087,
+matplotlib__matplotlib-23562, matplotlib__matplotlib-24149,
+matplotlib__matplotlib-24970, matplotlib__matplotlib-26011,
+mwaskom__seaborn-3010, mwaskom__seaborn-3190, psf__requests-3362,
+psf__requests-863, pytest-dev__pytest-5227, pytest-dev__pytest-7432,
+scikit-learn__scikit-learn-13142, scikit-learn__scikit-learn-13241,
+scikit-learn__scikit-learn-13496, scikit-learn__scikit-learn-13584,
+sympy__sympy-13471, sympy__sympy-13480, sympy__sympy-14774,
+sympy__sympy-15346, sympy__sympy-20212, sympy__sympy-20590,
+sympy__sympy-21614, sympy__sympy-21847, sympy__sympy-24152,
+sympy__sympy-24213
+
+Patch-application failures (10):
+django__django-15738, matplotlib__matplotlib-23299,
+matplotlib__matplotlib-23476, matplotlib__matplotlib-25498,
+pydata__xarray-5131, scikit-learn__scikit-learn-12471,
+scikit-learn__scikit-learn-13779, scikit-learn__scikit-learn-15535,
+scikit-learn__scikit-learn-25500, sympy__sympy-16792

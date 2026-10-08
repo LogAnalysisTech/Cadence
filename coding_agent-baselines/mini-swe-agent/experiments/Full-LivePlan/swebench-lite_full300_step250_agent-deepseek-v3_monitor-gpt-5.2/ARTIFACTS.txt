@@ -1,0 +1,202 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Full-LivePlan
+Experiment: swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Full-LivePlan/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2
+
+Archive: swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2.tar.gz
+Repository path: mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2.tar.gz
+Archive size: 29322024 bytes
+SHA-256: b3013ae47c66520ae4fa4760d6437bde85212848246fe3f473bc38dde52f4198
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Full-LivePlan/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2/swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step250_agent-deepseek-v3_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 55 / 300 (18.33%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-SWE-agent / Full LivePlan
+- Method: rule monitor plus Agent-Planner refiner.
+- Run id: mini_swebench_lite_full_liveplan_20260831_backbone-deepseek-v3_monitor-gpt-5.2
+- Dataset: SWE-bench Lite test split (300 cases)
+- Agent model: openai/deepseek/deepseek-chat through OpenRouter
+- Refiner model: gpt-5.2
+- Refiner configuration: config/default_with_rule.yaml
+- Step limit: 250
+- Concurrency: initially 12, reduced to 10 and then 8 after sustained provider rate limiting; only missing cases were resumed
+- Execution location: Modal
+
+Official evaluation:
+- Resolved: 55 / 300 (18.33%)
+- Unresolved: 245 / 300 (81.67%)
+- Cases with a valid completed test run: 219 / 300
+- Empty patches: 48
+- Patch-application failures among nonempty patches: 33
+
+Agent run outcomes:
+- Trajectories recorded: 300 / 300
+- Exit-status counts: {"Submitted": 264, "RepeatedFormatError": 36}
+- API calls / agent generations: 11,548 total; 38.49 mean/case
+- Agent actions: 9,395 total; 31.32 mean/case
+
+Monitor activity:
+- Proposed actions checked: 9,869 total; 32.90 mean/case
+- Refiner calls: 515; 1.72 mean/case
+- Refiner cooldown events: 645
+- Recorded interventions: 474
+- Recorded guidance messages: 686
+
+Time overhead:
+- Sum of per-case task elapsed time: 189,100.00 s
+- Mean task elapsed time: 630.33 s/case
+- Recorded component time: 188,938.27 s
+- Agent component latency: 182,609.50 s total; 608.70 s mean/case
+- Monitor component latency: 6,328.76 s total; 21.10 s mean/case
+- Weighted monitor/task time ratio: 3.35%
+
+Token overhead:
+- Agent tokens: 169,581,522 total; 565,271.74 mean/case
+  input=165,450,753, output=4,130,769, reasoning=0, cache_read=85,729,632, cache_write=0
+- Monitor tokens: 3,818,996 total; 12,729.99 mean/case
+  input=3,475,820, output=343,176, reasoning=0, cache_read=0, cache_write=0
+- Combined recorded tokens: 173,400,518
+- Weighted monitor token ratio: 2.20%
+- Dollar cost was not reliably recorded by this run; the archive preserves raw token accounting for reproducible pricing.
+
+Operation totals:
+operation | events | latency_seconds | total_tokens
+--- | ---: | ---: | ---:
+agent_generation | 11,548 | 177,526.05 | 169,581,522
+agent_action | 9,395 | 5,083.46 | 0
+rule_check | 9,869 | 52.68 | 0
+refiner_call | 515 | 6,276.08 | 3,818,996
+refiner_cooldown | 645 | 0.00 | 0
+
+Resolved cases (55):
+- django__django-10914
+- django__django-11001
+- django__django-11039
+- django__django-11583
+- django__django-12286
+- django__django-12497
+- django__django-12708
+- django__django-12983
+- django__django-13230
+- django__django-13401
+- django__django-13658
+- django__django-14238
+- django__django-14382
+- django__django-14411
+- django__django-14580
+- django__django-14608
+- django__django-14752
+- django__django-14787
+- django__django-14855
+- django__django-14915
+- django__django-15347
+- django__django-15789
+- django__django-15814
+- django__django-15851
+- django__django-16046
+- django__django-16139
+- django__django-16255
+- django__django-16379
+- django__django-16873
+- matplotlib__matplotlib-23314
+- matplotlib__matplotlib-23562
+- matplotlib__matplotlib-24149
+- matplotlib__matplotlib-24970
+- matplotlib__matplotlib-26020
+- mwaskom__seaborn-2848
+- mwaskom__seaborn-3190
+- psf__requests-863
+- pydata__xarray-5131
+- pytest-dev__pytest-5227
+- pytest-dev__pytest-7373
+- scikit-learn__scikit-learn-13142
+- scikit-learn__scikit-learn-13496
+- scikit-learn__scikit-learn-13584
+- sphinx-doc__sphinx-8713
+- sympy__sympy-13471
+- sympy__sympy-13480
+- sympy__sympy-14774
+- sympy__sympy-16988
+- sympy__sympy-18189
+- sympy__sympy-20154
+- sympy__sympy-21379
+- sympy__sympy-21847
+- sympy__sympy-24066
+- sympy__sympy-24152
+- sympy__sympy-24213
+
+Patch-application failures (33):
+- astropy__astropy-12907
+- astropy__astropy-14365
+- django__django-10924
+- django__django-11620
+- django__django-11999
+- django__django-12284
+- django__django-12915
+- django__django-13028
+- django__django-13033
+- django__django-13220
+- django__django-13448
+- django__django-14999
+- django__django-15388
+- django__django-15738
+- django__django-15790
+- django__django-16816
+- matplotlib__matplotlib-23563
+- matplotlib__matplotlib-25079
+- matplotlib__matplotlib-25332
+- matplotlib__matplotlib-25433
+- pylint-dev__pylint-7114
+- pylint-dev__pylint-7228
+- pytest-dev__pytest-7490
+- pytest-dev__pytest-9359
+- scikit-learn__scikit-learn-10508
+- scikit-learn__scikit-learn-13779
+- scikit-learn__scikit-learn-15512
+- sphinx-doc__sphinx-7686
+- sphinx-doc__sphinx-7975
+- sphinx-doc__sphinx-8595
+- sphinx-doc__sphinx-8801
+- sympy__sympy-14396
+- sympy__sympy-18835
+
+Metric notes:
+- Resolution uses the repository's official SWE-bench evaluator outputs.
+- Empty patches, RepeatedFormatError, failed tests, and patch-application failures remain normal unresolved outcomes.
+- The archive contains complete trajectories, patches, per-case summaries, predictions, evaluator outputs, and manifests.
+- The archive passed gzip and tar integrity checks locally, and its SHA-256 matched the digest returned by the Modal packager.

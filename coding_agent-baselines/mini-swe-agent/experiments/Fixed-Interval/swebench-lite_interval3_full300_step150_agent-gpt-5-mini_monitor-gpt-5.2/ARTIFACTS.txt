@@ -1,0 +1,112 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Fixed-Interval
+Experiment: swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Fixed-Interval/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2
+
+Archive: swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2.tar.gz
+Repository path: mini-swe-agent/Fixed-Interval/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2.tar.gz
+Archive size: 60521975 bytes
+SHA-256: b30b3134f0603d48dfc30c7920f6d119b2d1d215ce75212f9830b9163714db6b
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Fixed-Interval/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Fixed-Interval/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Fixed-Interval/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2/swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_interval3_full300_step150_agent-gpt-5-mini_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 165 / 300 (55.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Configuration:
+Agent model: openai/openai/gpt-5-mini
+Monitor model: openai/gpt-5.2
+Variant: refiner_only
+Fixed interval: 3
+Step limit: 150
+
+Complete 300-case results:
+- Resolved: 165/300 (55.00%)
+- Unresolved: 135
+- Evaluation completed: 299/300
+- Empty patches: 1
+- steps: total=8,948.000000; mean=29.826667
+- actions: total=8,874.000000; mean=29.580000
+- checks: total=2,613.000000; mean=8.710000
+- agent_tokens: total=162,153,633.000000; mean=540,512.110000
+- monitor_tokens: total=11,543,625.000000; mean=38,478.750000
+- recorded_total_tokens: total=173,697,258.000000; mean=578,990.860000
+- task_elapsed_seconds: total=78,154.354090; mean=260.514514
+- recorded_agent_cost_usd: total=18.237790; mean=0.060793
+- Exit statuses: {"Submitted": 299, "RepeatedFormatError": 1}
+Token totals use the recorded overhead summaries; cached/reasoning tokens are not added a second time. Recorded agent cost excludes monitor and infrastructure costs. Task elapsed time is summed per case and is not batch wall-clock time.
+
+Batch provenance:
+- Batch 1: first50; cases=50; resolved=44
+  Original run: mini_swebench_lite_fixedinterval3_step150_first50_20260912_backbone-gpt-5-mini_monitor-gpt-5.2
+  Original archive SHA-256: 463eb3a90c5261274e429dd6e903fdfc9f02f7ecbba69a9ae72212f6aa7d6dbc
+  Preserved metadata and source notes: provenance/batches/01_first50/
+- Batch 2: misbehavior50; cases=50; resolved=17
+  Original run: mini_swebench_lite_fixedinterval3_step150_misbehavior50_20260912_backbone-gpt-5-mini_monitor-gpt-5.2
+  Original archive SHA-256: 157f542134491598b751e298625386f63caa055ec70cd6352393cee71afd75fd
+  Preserved metadata and source notes: provenance/batches/02_misbehavior50/
+- Batch 3: misbehavior20_extension; cases=20; resolved=8
+  Original run: mini_swebench_lite_fixedinterval3_step150_misbehavior20_extension_20260913_backbone-gpt-5-mini_monitor-gpt-5.2
+  Original archive SHA-256: f91fab7fcb5e8191e5036584d95b0221e398f8c0d07f6b423cc05dc4551bda50
+  Preserved metadata and source notes: provenance/batches/03_misbehavior20_extension/
+- Batch 4: misbehavior13_extension; cases=13; resolved=6
+  Original run: mini_swebench_lite_fixedinterval3_step150_misbehavior13_extension_20260913_backbone-gpt-5-mini_monitor-gpt-5.2
+  Original archive SHA-256: 059b0b26fc42a62dfabf62562925cbb3323ccb4e86a28d6dc4c1b57276ce876f
+  Preserved metadata and source notes: provenance/batches/04_misbehavior13_extension/
+- Batch 5: remaining167; cases=167; resolved=90
+  Original run: mini_swebench_lite_fixedinterval3_step150_remaining167_20260925_backbone-gpt-5-mini_monitor-gpt-5.2
+  Original archive SHA-256: 42d33af105ea10d60b5d54fc2c974c80e460f93ad6cac45319bee7f6c59c4956
+  Preserved metadata and source notes: provenance/batches/05_remaining167/
+  Historical remote source: not recorded; see archived source notes.
+
+Archive contents:
+- cases/: 300 original case directories with trajectories, patches, monitor records and logs.
+- prediction_parts/, summary_parts/, evaluation_modal/: 300 records each plus available evaluation logs.
+- preds.json, results.json, summary.json, aggregate_metrics.json: unified 300-case predictions, results and statistics.
+- manifest.json, case_provenance.json, completion_verification.json, checksums.sha256: configuration, traceability and integrity.
+- provenance/batches/: original batch metadata and source notes; no nested source tarballs.
+- provenance/source_file_mapping.json: every source archive file mapped to a preserved file with SHA-256.
+
+Verification: all batch case sets are disjoint; the union matches the existing SWE-bench Lite full300 reference. All original archive file contents were preserved byte-for-byte and the completed archive was read back and verified.
+
+Interpretation:
+Consolidation of disjoint historical batches; no new generation or evaluation. Cohorts were selected and extended at different times, including after reviewing prior results. Original per-case metadata and source notes remain unchanged. The remaining167 runs record additional adaptive_interval defaults, which do not select the refiner_only scheduling path. Historical patch collection and runtime differences are preserved in the batch manifests; this is not a simultaneous rerun.
+Raw per-case metadata may contain original run IDs and paths; case_provenance.json gives the merged paths. Supplementary packages removed earlier were not restored.
+
+Solved cases (165):
+astropy__astropy-12907, astropy__astropy-14995, astropy__astropy-6938, django__django-10914, django__django-10924, django__django-11001, django__django-11039, django__django-11049, django__django-11099, django__django-11133, django__django-11179, django__django-11422, django__django-11583, django__django-11620, django__django-11797, django__django-11815, django__django-11848, django__django-11964, django__django-11999, django__django-12125, django__django-12184, django__django-12284, django__django-12286, django__django-12308, django__django-12453, django__django-12700, django__django-12708, django__django-12747, django__django-12856, django__django-12908, django__django-12915, django__django-12983, django__django-13028, django__django-13033, django__django-13158, django__django-13230, django__django-13401, django__django-13447, django__django-13590, django__django-13658, django__django-13710, django__django-13757, django__django-13925, django__django-13933, django__django-13964, django__django-14017, django__django-14238, django__django-14382, django__django-14411, django__django-14580, django__django-14608, django__django-14672, django__django-14752, django__django-14787, django__django-14855, django__django-14915, django__django-14999, django__django-15320, django__django-15347, django__django-15400, django__django-15498, django__django-15789, django__django-15790, django__django-15814, django__django-15851, django__django-16041, django__django-16139, django__django-16229, django__django-16255, django__django-16379, django__django-16527, django__django-16595, django__django-16816, django__django-16873, django__django-16910, django__django-17087, matplotlib__matplotlib-23314, matplotlib__matplotlib-23476, matplotlib__matplotlib-23562, matplotlib__matplotlib-23913, matplotlib__matplotlib-23964, matplotlib__matplotlib-24149, matplotlib__matplotlib-25311, matplotlib__matplotlib-25332, matplotlib__matplotlib-25433, matplotlib__matplotlib-25442, matplotlib__matplotlib-25498, matplotlib__matplotlib-26011, matplotlib__matplotlib-26020, mwaskom__seaborn-2848, mwaskom__seaborn-3010, mwaskom__seaborn-3407, psf__requests-1963, psf__requests-2148, psf__requests-2674, psf__requests-3362, pydata__xarray-4094, pydata__xarray-5131, pylint-dev__pylint-5859, pylint-dev__pylint-7080, pylint-dev__pylint-7993, pytest-dev__pytest-11143, pytest-dev__pytest-5227, pytest-dev__pytest-7168, pytest-dev__pytest-7373, pytest-dev__pytest-7432, pytest-dev__pytest-7490, pytest-dev__pytest-9359, scikit-learn__scikit-learn-10297, scikit-learn__scikit-learn-11281, scikit-learn__scikit-learn-12471, scikit-learn__scikit-learn-13142, scikit-learn__scikit-learn-13241, scikit-learn__scikit-learn-13439, scikit-learn__scikit-learn-13496, scikit-learn__scikit-learn-13497, scikit-learn__scikit-learn-13584, scikit-learn__scikit-learn-13779, scikit-learn__scikit-learn-14092, scikit-learn__scikit-learn-14894, scikit-learn__scikit-learn-14983, scikit-learn__scikit-learn-15512, scikit-learn__scikit-learn-15535, sphinx-doc__sphinx-10325, sphinx-doc__sphinx-10451, sphinx-doc__sphinx-11445, sphinx-doc__sphinx-7975, sphinx-doc__sphinx-8435, sphinx-doc__sphinx-8627, sphinx-doc__sphinx-8721, sphinx-doc__sphinx-8801, sympy__sympy-12481, sympy__sympy-13471, sympy__sympy-13480, sympy__sympy-13647, sympy__sympy-14396, sympy__sympy-14774, sympy__sympy-15011, sympy__sympy-15345, sympy__sympy-15609, sympy__sympy-15678, sympy__sympy-16792, sympy__sympy-17022, sympy__sympy-17139, sympy__sympy-17655, sympy__sympy-18057, sympy__sympy-18087, sympy__sympy-18189, sympy__sympy-18532, sympy__sympy-18621, sympy__sympy-18698, sympy__sympy-20154, sympy__sympy-20212, sympy__sympy-20442, sympy__sympy-20590, sympy__sympy-21055, sympy__sympy-21379, sympy__sympy-21614, sympy__sympy-21847, sympy__sympy-22714, sympy__sympy-23117, sympy__sympy-23262, sympy__sympy-24066, sympy__sympy-24152, sympy__sympy-24213
+
+Unresolved cases (135):
+astropy__astropy-14182, astropy__astropy-14365, astropy__astropy-7746, django__django-11019, django__django-11283, django__django-11564, django__django-11630, django__django-11742, django__django-11905, django__django-11910, django__django-12113, django__django-12470, django__django-12497, django__django-12589, django__django-13220, django__django-13265, django__django-13315, django__django-13321, django__django-13448, django__django-13551, django__django-13660, django__django-13768, django__django-14016, django__django-14155, django__django-14534, django__django-14667, django__django-14730, django__django-14997, django__django-15061, django__django-15202, django__django-15213, django__django-15252, django__django-15388, django__django-15695, django__django-15738, django__django-15781, django__django-15819, django__django-15902, django__django-15996, django__django-16046, django__django-16400, django__django-16408, django__django-16820, django__django-17051, matplotlib__matplotlib-18869, matplotlib__matplotlib-22711, matplotlib__matplotlib-22835, matplotlib__matplotlib-23299, matplotlib__matplotlib-23563, matplotlib__matplotlib-23987, matplotlib__matplotlib-24265, matplotlib__matplotlib-24334, matplotlib__matplotlib-24970, matplotlib__matplotlib-25079, mwaskom__seaborn-3190, pallets__flask-4045, pallets__flask-4992, pallets__flask-5063, psf__requests-2317, psf__requests-863, pydata__xarray-3364, pydata__xarray-4248, pydata__xarray-4493, pylint-dev__pylint-6506, pylint-dev__pylint-7114, pylint-dev__pylint-7228, pytest-dev__pytest-11148, pytest-dev__pytest-5103, pytest-dev__pytest-5221, pytest-dev__pytest-5413, pytest-dev__pytest-5495, pytest-dev__pytest-5692, pytest-dev__pytest-6116, pytest-dev__pytest-7220, pytest-dev__pytest-8365, pytest-dev__pytest-8906, scikit-learn__scikit-learn-10508, scikit-learn__scikit-learn-10949, scikit-learn__scikit-learn-11040, scikit-learn__scikit-learn-14087, scikit-learn__scikit-learn-25500, scikit-learn__scikit-learn-25570, scikit-learn__scikit-learn-25638, scikit-learn__scikit-learn-25747, sphinx-doc__sphinx-7686, sphinx-doc__sphinx-7738, sphinx-doc__sphinx-8273, sphinx-doc__sphinx-8282, sphinx-doc__sphinx-8474, sphinx-doc__sphinx-8506, sphinx-doc__sphinx-8595, sphinx-doc__sphinx-8713, sympy__sympy-11400, sympy__sympy-11870, sympy__sympy-11897, sympy__sympy-12171, sympy__sympy-12236, sympy__sympy-12419, sympy__sympy-12454, sympy__sympy-13031, sympy__sympy-13043, sympy__sympy-13146, sympy__sympy-13177, sympy__sympy-13437, sympy__sympy-13773, sympy__sympy-13895, sympy__sympy-13915, sympy__sympy-13971, sympy__sympy-14024, sympy__sympy-14308, sympy__sympy-14317, sympy__sympy-14817, sympy__sympy-15308, sympy__sympy-15346, sympy__sympy-16106, sympy__sympy-16281, sympy__sympy-16503, sympy__sympy-16988, sympy__sympy-17630, sympy__sympy-18199, sympy__sympy-18835, sympy__sympy-19007, sympy__sympy-19254, sympy__sympy-19487, sympy__sympy-20049, sympy__sympy-20322, sympy__sympy-20639, sympy__sympy-21171, sympy__sympy-21612, sympy__sympy-21627, sympy__sympy-22005, sympy__sympy-22840, sympy__sympy-23191, sympy__sympy-24102, sympy__sympy-24909

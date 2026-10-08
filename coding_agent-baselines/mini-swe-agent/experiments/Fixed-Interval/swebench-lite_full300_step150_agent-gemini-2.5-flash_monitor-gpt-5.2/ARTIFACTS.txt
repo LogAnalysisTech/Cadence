@@ -1,0 +1,135 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Fixed-Interval
+Experiment: swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Fixed-Interval/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2
+
+Archive: swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Repository path: mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+Archive size: 45096189 bytes
+SHA-256: 00e4c11dbaa10789efd4b56b048f0b6a34447b68dc06e184e5ba532045399e5c
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Fixed-Interval/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2/swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step150_agent-gemini-2.5-flash_monitor-gpt-5.2.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 102 / 300 (34.00%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-swe-agent / Fixed-Interval (LivePlanBoundaryMonitor
+  variant=refiner_only, built-in mini-swe-agent LivePlan integration)
+- Run id: mini_swebench_lite_fixedinterval_step150_full300_20260903_backbone-gemini-2.5-flash_monitor-gpt-5.2
+- Dataset: SWE-bench Lite, exact 300-case test set
+- Agent model: openai/google/gemini-2.5-flash (through OpenRouter)
+- Refiner/reviewer model: gpt-5.2 (never gpt-5.2-codex), default upstream
+  refiner cadence/configuration, no override
+- Step limit: 150 for every case
+- Execution location: Modal, initial generation parallelism 15 continuous;
+  a supplemental 2-case gap-fill pass at parallelism 2; a 30-case API-error
+  recovery pass at parallelism 15 continuous
+- Evaluation: parallelism 15 continuous, incremental reuse of unaffected
+  results
+- Recovery provenance (this archive's history): 2 originally-missing cases
+  were completed (sympy__sympy-24213, resolved; sympy__sympy-24909, ordinary
+  test failure). Separately, 30 historical cases had failed generation with
+  the OpenRouter "Key limit exceeded (total limit)" quota-exhaustion
+  signature; each was individually confirmed against that signature and
+  rerun with explicit user authorization. Their original (quota-corrupted)
+  generation/evaluator records are retained outside this archive, in the
+  recovery_backups/<run>/api_error30_20260904 prefix on the
+  rafd-mini-swe-agent-artifacts Modal volume, not deleted. All 270 unaffected
+  cases' generation/evaluator results were preserved as-is; the recovery
+  pass added 11 additional solves over the prior, quota-corrupted 91/300
+  estimate. One pre-existing evaluator infrastructure failure
+  (django__django-15738) received its one scheduled pre-test connection-reset
+  retry; no additional evaluator infrastructure retry was needed for the 30
+  recovered cases. The stale pre-recovery archive was never published.
+
+Official evaluation:
+- Resolved: 102 / 300 (34.00%)
+- Unresolved: 198 / 300 (66.00%)
+- Evaluation completed: 227 / 300 (102 resolved, 125 ordinary test failures)
+- Empty patches: 72
+- Patch-application failures among nonempty patches: 1
+- Generation statuses: Submitted 238, LimitsExceeded 46, RepeatedFormatError 16
+- Evaluator infrastructure failures requiring retry: 1 (see recovery
+  provenance above; resolved on retry)
+
+Recorded model usage (final retained generation only, not total campaign
+billing -- the 30 quota-corrupted attempts' usage is excluded, since their
+records live in the recovery backup outside this archive):
+- Agent generations: 17,445
+- Agent prompt tokens: 505,846,710
+- Agent completion tokens: 4,282,548
+- Agent cache-read tokens: 434,683,368 (subset of prompt tokens above)
+- Refiner (monitor) calls: 3,039
+- Refiner (monitor) prompt tokens: 12,966,066
+- Refiner (monitor) completion tokens: 1,723,749
+- Combined total: 524,819,073 tokens, mean 1,749,396.91 per case
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At OpenRouter standard list prices used for this audit (Gemini 2.5 Flash:
+  USD 0.30/M input, USD 2.50/M output, cache-read USD 0.03/M; gpt-5.2:
+  USD 1.75/M input, USD 14.00/M output):
+  - Agent (Gemini 2.5 Flash): USD 45.10
+  - Refiner (gpt-5.2): USD 46.82
+  - Total: USD 91.92, or USD 0.3064 per case
+- This estimate excludes Modal compute and the superseded quota-corrupted
+  attempts' usage (retained separately in the recovery backup) and may
+  differ from the routed provider invoice.
+
+Comparison (same 300-case pool, same backbone/refiner models, mini-swe-agent
++ Gemini 2.5 Flash):
+- Vanilla (no monitor): 51 / 300 (17.00%)
+- RuleOnly (variant=monitor, no LLM refiner call): 72 / 300 (24.00%)
+- Fixed-Interval (this artifact): 102 / 300 (34.00%)
+- Genuine Full-LivePlan (variant=refiner, rules + gpt-5.2 refiner):
+  80 / 300 (26.67%)
+- Adaptive-Interval: 127 / 300 (42.33%)
+
+Historical packaging verification:
+- The archive was uploaded directly from a local download of the Modal-side
+  tar.gz (built by tarring the run_id directory in place, not reconstructed
+  from individual downloads).
+- gzip/tar read-through and complete member listing were verified before
+  upload (5,191 archive members); case-count (300) and per-case required
+  file presence (trajectory, patch, prediction, summary, evaluator records)
+  were asserted before publishing.
+- Immutable HF revision and remote file size were verified after upload.
+- SHA-256 above was computed locally on the exact file uploaded (added
+  retroactively when this artifact's documentation was reformatted to match
+  this session's standard template; the original publish record noted "no
+  independent hash calculation" and verified integrity by gzip/tar
+  read-through plus remote size match instead).

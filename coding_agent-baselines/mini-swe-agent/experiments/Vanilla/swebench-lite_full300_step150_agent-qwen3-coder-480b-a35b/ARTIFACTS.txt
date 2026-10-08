@@ -1,0 +1,134 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: mini-swe-agent
+Method: Vanilla
+Experiment: swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b
+Local directory: coding_agent-baselines/mini-swe-agent/experiments/Vanilla/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b
+
+Archive: swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b.tar.gz
+Repository path: mini-swe-agent/Vanilla/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b.tar.gz
+Archive size: 31383691 bytes
+SHA-256: 9f2d900965e15f6acc858405f937484f98e4ab76bbb1770b25601b5ae5996c64
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Vanilla/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/mini-swe-agent/Vanilla/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results mini-swe-agent/Vanilla/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b/swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step150_agent-qwen3-coder-480b-a35b.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 113 / 300 (37.67%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: mini-swe-agent / Vanilla (no runtime monitor)
+- Run id: mini_swebench_lite_vanilla_20260903_backbone-qwen3-coder-480b-a35b
+- Dataset: SWE-bench Lite, exact 300-case test set (same pool used across the
+  same-day Moatless comparison and the other mini-swe-agent Qwen runs)
+- Agent model: openai/qwen/qwen3-coder (Qwen3-Coder-480B-A35B via OpenRouter)
+- Step limit: 150
+- Execution location: Modal
+
+Data-quality history (two rounds of incompleteness found and fixed after the
+original generation run, both discovered via server-side scans of every
+runner.log / prediction_parts / summary_parts / traj.json directly on the
+Modal volume, not by downloading each case):
+1. 31 cases originally reported unresolved (empty_patch) were found to have
+   actually failed on an OpenRouter "Key limit exceeded (total limit)" quota
+   outage partway through the original generation run, not genuine model
+   failure -- their runner.log showed litellm.exceptions.APIError with that
+   exact message. These 31 cases were deleted (run_result/prediction/summary/
+   evaluation artifacts all removed) and regenerated cleanly.
+2. A further 6 cases (django__django-11999, missing only its traj.json
+   despite having a patch and prediction; and 5 cases clustered at the
+   alphabetical tail -- sympy__sympy-24066/24102/24152/24213/24909 --
+   missing both prediction_parts and summary_parts entirely) were found to
+   have never finished generation in the original run, for reasons unrelated
+   to the quota outage (no error signature in their logs; most plausibly the
+   generation container was stopped or hit some other transient issue before
+   completing this small tail batch). These 6 were also regenerated.
+- After both fixes, a full completeness scan (prediction_parts +
+  summary_parts + traj.json for all 300 cases) came back clean.
+
+Official evaluation:
+- Resolved: 113 / 300 (37.67%)
+- Unresolved: 187 / 300 (62.33%)
+- Evaluation completed: 270 / 300
+- Empty patches: 14
+- Patch-application failures among nonempty patches: 16
+- Evaluator infrastructure failures requiring retry: 0
+
+Statistics verification (2026-10-07):
+- Usage totals were recomputed from all 300 retained per-case summary_parts/*.json
+  records; evaluation counts use evaluation_modal/*/result.json.
+- Agent API calls count overhead_summary.by_operation.agent_generation events;
+  refiner API calls count by_operation.refiner_call events. Action execution,
+  rule checks and cooldown events are excluded. These are recorded logical
+  calls; network-level retries are not separately reconstructed.
+- Cost estimates retain the historical rates stated below; no new pricing
+  assumption or cache discount was introduced by this correction.
+- The archived root summary.json covers only 6 cases from an earlier batch.
+  Full-run totals below are based on the 300 per-case records, not that stale
+  root summary. The source archive bytes and SHA-256 are preserved under the new filename.
+
+Recorded model usage:
+- Agent API calls: 16,989
+- Agent prompt tokens: 247,367,668
+- Agent completion tokens: 2,174,545
+- Agent cache-read tokens: 228,712,031
+- Raw agent prompt-plus-completion tokens: 249,542,213 (831,807.4 mean/case)
+- No monitor/refiner usage (Vanilla has no monitor by definition)
+- Usage recorded for all 300 / 300 cases (verified from retained per-case records)
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At OpenRouter standard list prices used for this audit (Qwen3-Coder-480B-A35B:
+  USD 0.22/M input, USD 1.80/M output; cache-read discounts not applied):
+  - Agent (Qwen3-Coder-480B-A35B): USD 58.34
+  - Total: USD 58.34, or USD 0.1945 per case
+- This estimate excludes Modal compute, persistent indexing, storage and
+  network costs and may differ from the routed provider invoice.
+
+Comparison (verified full 300-case pool; mini-swe-agent + Qwen3-Coder-480B-A35B):
+- Vanilla (no monitor): 113 / 300 (37.67%)
+- RuleOnly (rules only, no LLM refiner): 119 / 300 (39.67%)
+- Fixed-Interval (refiner every 5 steps, gpt-5.2): 159 / 300 (53.00%)
+- Cadence (Adaptive-Interval, gpt-5.2): 158 / 300 (52.67%)
+- Full-LivePlan (rules + gpt-5.2 refiner): 146 / 300 (48.67%)
+
+Historical packaging verification:
+- The archive was uploaded directly from a local download of the Modal-side
+  tar.gz (built by tarring the run_id directory in place, not reconstructed
+  from individual downloads).
+- SHA-256 above was computed locally on the exact file uploaded.
+- gzip integrity and complete tar listing were checked by decompressing
+  every member before upload; case-count (300) and per-case required file
+  presence (prediction_parts, summary_parts, trajectory) were asserted
+  before publishing -- these assertions are what caught both rounds of
+  incomplete cases described above.

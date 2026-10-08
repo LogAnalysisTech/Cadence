@@ -1,0 +1,154 @@
+Cadence experiment artifact
+===========================
+Repository: https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results
+Visibility: public
+Archive revision: 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d
+Published: 2026-10-08
+Agent: moatless
+Method: RuleOnly
+Experiment: swebench-lite_full300_step50_agent-gemini-2.5-flash
+Local directory: coding_agent-baselines/moatless/experiments/RuleOnly/swebench-lite_full300_step50_agent-gemini-2.5-flash
+
+Archive: swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+Repository path: moatless/RuleOnly/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+Archive size: 33498656 bytes
+SHA-256: 969108a1d984e1c6bb0ee6277492d0fe39a5719a160009ad73e6ad291c9253d8
+
+Direct download:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/resolve/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/RuleOnly/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz?download=true
+
+File page:
+https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results/blob/3466a17a473c2068f4e7ef37a31d62ddd1d5c27d/moatless/RuleOnly/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+
+CLI download (public dataset; login is not required):
+hf download dengdan1999/Cadence-Experiment-Results moatless/RuleOnly/swebench-lite_full300_step50_agent-gemini-2.5-flash/swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz --repo-type dataset --revision 3466a17a473c2068f4e7ef37a31d62ddd1d5c27d --local-dir .
+
+Extract into an empty directory:
+tar -xzf swebench-lite_full300_step50_agent-gemini-2.5-flash.tar.gz
+(The CLI saves the file under Repository path; use that path when extracting.)
+
+Verified coverage and results:
+Dataset: SWE-bench Lite (300-case test pool)
+Generation records: 300 / 300
+Per-case evaluation records: 300 / 300
+Trajectories: 300 / 300
+Resolved: 77 / 300 (25.67%)
+All 300 cases have generation records, per-case evaluation records and trajectories.
+
+Packaging and provenance:
+- One named tar.gz per experiment, with this ARTIFACTS.txt alongside it.
+- Original per-case data and embedded run IDs are retained. The full300 label
+  describes the 300-case pool; any historical missing files are disclosed above.
+- The archive was renamed without changing its bytes; its SHA-256 is unchanged.
+- Downloads use this repository only. Original archive filenames/checksums
+  in the experiment notes are historical provenance, not download locations.
+
+Experiment details and verified statistics
+=========================================
+Scope and provenance:
+- Condition: Moatless / RuleOnly (LivePlanBoundaryMonitor variant=monitor,
+  rule-based StatefulPhaseMonitor checks every action; guidance text comes
+  directly from matched rules, no LLM refiner call). The local directory is
+  now classified under RuleOnly. Historical run IDs, archive filenames and
+  remote publication paths retain their original "fullliveplan" labels.
+  Genuine Full-LivePlan (variant=refiner, rule engine plus an LLM refiner)
+  was run separately; see the Full-LivePlan category for those results.
+- Run id: moatless_swebench_lite_fullliveplan_step50_full300_20260905_backbone-gemini-2.5-flash_monitor-gpt-5.2
+- Dataset: SWE-bench Lite, exact 300-case test set
+- Composition: the first 100 cases were originally generated and evaluated
+  under a separate 100-case run_id (moatless100_full_v2_20260905_gemini_gpt52)
+  as part of a four-way Fixed-Interval/Full-LivePlan/Adaptive-Interval/Vanilla
+  comparison, then copied into this unified run_id. Data-quality note: 3 of
+  those "original 100" cases (pytest-dev__pytest-11148, sympy__sympy-16988,
+  sympy__sympy-18087) turned out to have never actually completed generation
+  in the source run -- each had only a stray effective_flow.json and an empty
+  evaluation_modal directory, a casualty of an earlier Modal transport-layer
+  crash during that run's generation. This was discovered when publishing this
+  archive failed a completeness assertion. All 3 were generated and evaluated
+  fresh directly under this run_id before packaging; the exact remaining
+  200-case complement was generated and evaluated directly under this run_id
+  from the start. No case that had genuinely completed was regenerated or
+  re-evaluated.
+- Agent model: openai/google/gemini-2.5-flash
+- Refiner/reviewer model: gpt-5.2 (never gpt-5.2-codex -- explicitly verified in
+  every launch command, including the 3-case fix run)
+- Check mechanism: rule-based, every executed action; the agent's own system
+  prompt is rewritten to request exactly one tool call per response for this
+  variant, so node count and action count coincide (no multi-action-group
+  ambiguity here, unlike Fixed-Interval)
+- Search limit: 50 steps for every case
+- Execution location: Modal, generation parallelism 14 for the 200-case bulk
+  generation (continuous/rolling scheduling), parallelism 3 for the 3-case fix
+- Index policy: persistent prebuilt voyage-code-3-1024-v1 indexes (reused, not
+  rebuilt)
+- Data-quality fix (this revision): a broader session-wide sweep of every
+  Moatless Gemini condition for the transient Gemini "Completion response is
+  empty" jitter signature found 18 cases in this run with
+  agent_exit=completion_error (see /tmp/moatless_ruleonly_errors.txt for the
+  exact list). All 18 were regenerated. 17 completed cleanly on the first
+  retry. The 18th, django__django-12700, failed with the same transient
+  error twice more, then on a third, isolated (parallelism=1) attempt
+  appeared to stall -- its search tree stopped advancing past Node20 and
+  kept repeating the same build/execute cycle for 18+ minutes with no
+  progress. It was killed and is kept as a genuine unresolved
+  completion_error rather than retried further, the same treatment given to
+  scikit-learn__scikit-learn-10508 in the genuine Full-LivePlan artifact.
+  (One other case in this fix pass, matplotlib__matplotlib-25498, showed the
+  same long-running, seemingly-stuck log pattern but turned out to be a
+  false alarm: it had already written a clean agent_exit=finish result
+  several minutes before the process was checked -- the repeated log lines
+  were unrelated search-tree exploration noise after the real result was
+  already recorded.) A full server-side scan after the fix confirmed exactly
+  1/300 remaining completion_error case (django__django-12700).
+
+Official evaluation:
+- Resolved: 77 / 300 (25.67%)
+- Unresolved: 223 / 300 (74.33%)
+
+Statistics verification (2026-10-07):
+- Usage totals were recomputed from all 300 retained per-case moatless/*/run_result.json
+  records; evaluation counts use evaluation_modal/*/result.json.
+- Agent API calls count overhead_summary.by_operation.agent_generation events;
+  refiner API calls count by_operation.refiner_call events. Action execution,
+  rule checks and cooldown events are excluded. These are recorded logical
+  calls; network-level retries are not separately reconstructed.
+- Cost estimates retain the historical rates stated below; no new pricing
+  assumption or cache discount was introduced by this correction.
+
+Recorded model usage:
+- Agent API calls: 10,538
+- Agent prompt tokens: 134,637,690
+- Agent completion tokens: 2,914,803
+- Rule-engine checks: 10,505
+- Refiner (monitor) API calls: 0 (guidance is rule-engine text)
+- Refiner (monitor) prompt/completion tokens: 0 / 0
+- Usage recorded for all 300 / 300 cases (verified from retained per-case records)
+
+Cost estimate:
+- Serialized provider/framework instance_cost values were zero and are not
+  treated as evidence of free execution.
+- At OpenRouter standard list prices used for this audit (Gemini 2.5 Flash:
+  USD 0.30/M input, USD 2.50/M output; cache-read discounts not applied):
+  - Agent (Gemini 2.5 Flash): USD 47.68
+  - Refiner: USD 0.00 (no LLM calls in this variant)
+  - Total: USD 47.68, or USD 0.1589 per case
+- This estimate excludes Modal compute, persistent indexing, storage and
+  network costs and may differ from the routed provider invoice.
+
+Comparison (verified full 300-case pool; Moatless + Gemini 2.5 Flash):
+- Vanilla (no monitor): 72 / 300 (24.00%)
+- RuleOnly (rules only, no LLM refiner): 77 / 300 (25.67%)
+- Fixed-Interval (refiner every 5 steps, gpt-5.2): 92 / 300 (30.67%)
+- Cadence (Adaptive-Interval, gpt-5.2): 119 / 300 (39.67%)
+- Full-LivePlan (retained v2 run, rules + gpt-5.2 refiner): 106 / 300 (35.33%)
+
+Historical packaging verification:
+- The archive was uploaded directly from a local download of the Modal-side
+  tar.gz (built by tarring the run_id directory in place, not reconstructed
+  from individual downloads).
+- SHA-256 above was computed locally on the exact file uploaded.
+- gzip integrity and complete tar listing were checked by decompressing every
+  member before upload; case-count (300) and per-case required file presence
+  (prediction_parts, trajectory.json, run_result.json, evaluation result.json)
+  were asserted before publishing -- this assertion is what caught the 3
+  incomplete cases described above.

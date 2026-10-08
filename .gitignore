@@ -1,0 +1,76 @@
+# Trajectory files are large and kept local-only.
+# Only eval_result.json, patch.diff, and results.json are tracked in git.
+*/traj/**/*.traj
+coding_agent-baselines/*/trajectories/*/trajectory.json
+coding_agent-baselines/moatless/runs/
+coding_agent-baselines/moatless/moatless-gpt-5-mini.*.json
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+downloads/
+.idea/
+.env
+*/.env
+.env.local
+*/.env.local
+.env.*
+!.env.example
+config.py
+
+# openhands-benchmarks needs its own + its SDK submodule's .git present at
+# runtime (benchmarks/utils/version.py shells out to `git submodule status`
+# to compute an image-tag SHA) - kept as a real nested checkout rather than
+# stripped, so exclude it here instead of letting git treat it as a gitlink.
+coding_agent-baselines/openhands-benchmarks/.git
+coding_agent-baselines/openhands-benchmarks/vendor/software-agent-sdk/.git
+coding_agent-baselines/moatless/index_store/
+coding_agent-baselines/moatless/moatless/evaluation/datasets/*.json
+
+# Verbose runtime logs (large, not analysis results)
+logs/run_evaluation/
+logs/*.log
+coding_agent-baselines/live-swe-agent/eval_run/logs/
+
+# Large trajectory and agent run logs inside realtime_monitor
+realtime_monitor/runs/**/*.traj
+realtime_monitor/runs/**/*.debug.log
+realtime_monitor/runs/**/*.info.log
+realtime_monitor/runs/**/*.trace.log
+
+# Realtime monitor experiments are retained locally; commit only curated
+# reports explicitly when they are useful for reproducibility.
+realtime_monitor/runs/
+.realtime_monitor/
+
+# Full experiment trajectories and logs are retained locally. Curated
+# manifests, summaries, and reports under experiments/ remain reviewable.
+experiments/*/raw/
+
+# Per-run generation/evaluation logs under ad-hoc experiments/ folders are
+# large raw output, not curated results -- excluded like the other runtime
+# logs above.
+experiments/*/logs/
+
+# Individual raw agent trajectories dumped directly under ad-hoc
+# experiments/ folders (outside coding_agent-baselines/), mirroring the
+# trajectory exclusions above.
+experiments/**/*.traj.json
+experiments/**/trajectory.json
+
+# Raw Docent run downloads may contain full third-party trajectories.
+realtime_monitor/docent_analysis/*/failed_runs/
+realtime_monitor/docent_analysis/*/sample_agent_run*.json
+
+# Agent experiment payloads live in the private Hugging Face artifact dataset.
+# Git tracks only the authenticated pointer/checksum file for each run.
+coding_agent-baselines/*/experiments/**
+!coding_agent-baselines/*/experiments/**/
+!coding_agent-baselines/*/experiments/**/ARTIFACTS.txt
+coding_agent-baselines/mini-swe-agent/original_agent_outcome/
+
+# Local SWE-bench evaluator failure captures.
+*/failures-parallel.txt
+
+# Claude Code session-local scratch state, not project content.
+.claude/
